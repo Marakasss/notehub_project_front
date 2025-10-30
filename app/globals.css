@@ -1,0 +1,37 @@
+/* stylelint-disable at-rule-no-unknown */
+@import "tailwindcss";
+@plugin "daisyui";
+
+@custom-variant dark (&:is(.dark *));
+@theme {
+  --font-marker: var(--font-marker);
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-roboto), sans-serif;
+  letter-spacing: 0.05em;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: #060010;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+@theme {
+  --animate-shine: shine 5s linear infinite;
+}
