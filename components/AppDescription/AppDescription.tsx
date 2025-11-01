@@ -31,14 +31,12 @@ const AppDescription = () => {
             },
           ]}
           textAutoHide={false}
-          enableStars={false}
           enableSpotlight={true}
           enableBorderGlow={true}
           enableTilt={true}
           enableMagnetism={true}
           clickEffect={true}
           spotlightRadius={700}
-          particleCount={12}
           glowColor="50, 0, 180"
         />
       </div>

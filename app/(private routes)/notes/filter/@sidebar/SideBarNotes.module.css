@@ -5,22 +5,22 @@
 }
 
 .menuItem {
-  margin-bottom: 16px;
+  margin-bottom: 3px;
 }
 
 .menuLink {
-  color: #5f2a05;
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 8px;
   display: block;
-
+  font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 60%;
 }
 
 .menuLink.active,
 .menuLink:hover {
-  background-color: rgba(255, 255, 255, 0.477);
-  transform: translateX(4px);
+  background-color: rgba(3, 73, 98, 0.499);
+  transform: translateX(16px);
   backdrop-filter: blur(4px);
 }

@@ -19,12 +19,10 @@ export interface BentoCardProps {
 export interface BentoProps {
   cards?: BentoCardProps[];
   textAutoHide?: boolean;
-
   enableSpotlight?: boolean;
   enableBorderGlow?: boolean;
   disableAnimations?: boolean;
   spotlightRadius?: number;
-
   enableTilt?: boolean;
   glowColor?: string;
   clickEffect?: boolean;
@@ -510,9 +508,9 @@ const MagicBento: React.FC<BentoProps> = ({
   }
 
   .card--medium {
-    grid-column: span 2;
+    grid-column: span 1;
     grid-row: span 1;
-    min-height: 280px;
+    min-height: 200px;
   }
 
   .card--large {
@@ -523,7 +521,8 @@ const MagicBento: React.FC<BentoProps> = ({
    .card--xl {
   grid-column: span 4;
   grid-row: span 2;
-  min-height: 500px;
+  min-height: 400px;
+  max-height: 550px;
 }
 
   /* 🔥 Glow border ефект */
@@ -591,15 +590,17 @@ const MagicBento: React.FC<BentoProps> = ({
     -webkit-line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: break-word; 
+  overflow-wrap: anywhere; 
   }
 
   /* 📱 Mobile адаптація */
-  @media (max-width: 599px) {
+  @media (max-width: 640px) {
     .card--large,
     .card--medium {
       grid-column: span 1;
-      grid-row: span 1;
-      min-height: 220px;
+      grid-row: span 2;
+      max-height: 80px;
     }
   }
 `}
@@ -616,12 +617,12 @@ const MagicBento: React.FC<BentoProps> = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        <div className="card-responsive grid gap-2">
+        <div className=" grid gap-2">
           {cards.map((card, index) => {
             const sizeClass = card.size ? `card--${card.size}` : "card--medium";
 
             const baseClassName = `
-    card flex flex-col justify-between relative
+    card flex flex-wrap justify-between relative
     aspect-[4/3] w-full max-w-full p-5 rounded-[20px]
     border border-solid font-light overflow-hidden
     transition-all duration-300 ease-in-out

@@ -1,23 +1,22 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useTransition } from "react";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
-  const [loading, setLoading] = useState(true);
-
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
   useEffect(() => {
-    // refresh викличе перезавантаження даних
-    router.refresh();
-    setLoading(false);
+    startTransition(() => {
+      router.refresh();
+    });
   }, [router]);
 
-  return <>{loading ? <div>Loading...</div> : children}</>;
+  return <>{isPending ? <div>Loading...</div> : children}</>;
 };
 
 export default AuthLayout;
