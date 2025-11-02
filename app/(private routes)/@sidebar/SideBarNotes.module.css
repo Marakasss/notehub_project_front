@@ -2,6 +2,12 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  width: 90%;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .menuItem {
@@ -16,9 +22,18 @@
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  transition: all 0.4s ease;
 }
 
-.menuLink.active,
+.menuLink.active {
+  background-color: rgba(3, 73, 98, 0.499);
+
+  backdrop-filter: blur(4px);
+}
 .menuLink:hover {
   background-color: rgba(3, 73, 98, 0.499);
   transform: translateX(16px);

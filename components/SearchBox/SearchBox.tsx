@@ -1,4 +1,4 @@
-import css from "./SearchBox.module.css";
+import Input from "../UI/Input/Input";
 
 interface SearchBoxProps {
   onSearch: (value: string) => void;
@@ -10,12 +10,13 @@ const SearchBox = ({ value, onSearch }: SearchBoxProps) => {
     onSearch(e.target.value);
   };
   return (
-    <input
+    <Input
+      id="search"
       value={value}
       onChange={handleChange}
-      className={css.input}
       type="text"
-      placeholder="Search notes"
+      placeHolder="Search notes"
+      style={{ height: "42px", alignSelf: "center" }}
     />
   );
 };

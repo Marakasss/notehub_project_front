@@ -1,7 +1,7 @@
 "use client";
 
 import { login } from "@/lib/api/clientApi";
-import Logo from "@/components/Logo/Logo";
+import Logo from "@/components/UI/Input/Logo/Logo";
 import AuthForm from "@/components/AuthForm/AuthForm";
 
 const SignInPage = () => {

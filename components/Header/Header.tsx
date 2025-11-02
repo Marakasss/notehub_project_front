@@ -1,29 +1,24 @@
 "use client";
-import Link from "next/link";
-import css from "./Header.module.css";
-import TagsMenu from "../TagsMenu/TagsMenu";
-import AuthNavigation from "../AuthNavigation/AuthNavigation";
-import Logo from "../Logo/Logo";
+
+import Logo from "../UI/Input/Logo/Logo";
+import SearchBox from "../SearchBox/SearchBox";
+import LinkButton from "../UI/Input/Button/LinkButton";
+import { useSearchStore } from "@/lib/store/searchStore";
 
 const Header = () => {
+  const { query, setQuery } = useSearchStore();
   return (
-    <header className=" bg-transparent border-b border-b-slate-800 p-4 flex justify-between items-center">
-      <Logo />
-      <nav className={css.mainNavigation} aria-label="Main Navigation">
-        <ul className={css.navigation}>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
+    <header className=" bg-transparent border-b border-b-cyan-900 p-4 flex justify-between items-center">
+      <div className="flex align-middle justify-center gap-3 ">
+        <Logo />
+        <SearchBox value={query} onSearch={setQuery} />
+      </div>
 
-          <li>
-            <TagsMenu />
-          </li>
-        </ul>
-
-        <ul className={css.navigation}>
-          <AuthNavigation />
-        </ul>
-      </nav>
+      <LinkButton
+        href="/notes/action/create"
+        textContent="Create +"
+        TWclasses="h-10"
+      />
     </header>
   );
 };

@@ -94,178 +94,6 @@ const updateCardGlowProperties = (
   card.style.setProperty("--glow-radius", `${radius}px`);
 };
 
-// const ParticleCard: React.FC<{
-//   children: React.ReactNode;
-//   className?: string;
-//   disableAnimations?: boolean;
-//   style?: React.CSSProperties;
-
-//   glowColor?: string;
-//   enableTilt?: boolean;
-//   clickEffect?: boolean;
-//   enableMagnetism?: boolean;
-// }> = ({
-//   children,
-//   className = "",
-//   disableAnimations = false,
-//   style,
-
-//   glowColor = DEFAULT_GLOW_COLOR,
-//   enableTilt = true,
-//   clickEffect = false,
-//   enableMagnetism = false,
-// }) => {
-//   const cardRef = useRef<HTMLDivElement>(null);
-//   const isHoveredRef = useRef(false);
-//   const magnetismAnimationRef = useRef<gsap.core.Tween | null>(null);
-
-//   useEffect(() => {
-//     if (disableAnimations || !cardRef.current) return;
-
-//     const element = cardRef.current;
-
-//     const handleMouseEnter = () => {
-//       isHoveredRef.current = true;
-
-//       if (enableTilt) {
-//         gsap.to(element, {
-//           rotateX: 5,
-//           rotateY: 5,
-//           duration: 0.3,
-//           ease: "power2.out",
-//           transformPerspective: 1000,
-//         });
-//       }
-//     };
-
-//     const handleMouseLeave = () => {
-//       isHoveredRef.current = false;
-
-//       if (enableTilt) {
-//         gsap.to(element, {
-//           rotateX: 0,
-//           rotateY: 0,
-//           duration: 0.3,
-//           ease: "power2.out",
-//         });
-//       }
-
-//       if (enableMagnetism) {
-//         gsap.to(element, {
-//           x: 0,
-//           y: 0,
-//           duration: 0.3,
-//           ease: "power2.out",
-//         });
-//       }
-//     };
-
-//     const handleMouseMove = (e: MouseEvent) => {
-//       if (!enableTilt && !enableMagnetism) return;
-
-//       const rect = element.getBoundingClientRect();
-//       const x = e.clientX - rect.left;
-//       const y = e.clientY - rect.top;
-//       const centerX = rect.width / 2;
-//       const centerY = rect.height / 2;
-
-//       if (enableTilt) {
-//         const rotateX = ((y - centerY) / centerY) * -10;
-//         const rotateY = ((x - centerX) / centerX) * 10;
-
-//         gsap.to(element, {
-//           rotateX,
-//           rotateY,
-//           duration: 0.1,
-//           ease: "power2.out",
-//           transformPerspective: 1000,
-//         });
-//       }
-
-//       if (enableMagnetism) {
-//         const magnetX = (x - centerX) * 0.05;
-//         const magnetY = (y - centerY) * 0.05;
-
-//         magnetismAnimationRef.current = gsap.to(element, {
-//           x: magnetX,
-//           y: magnetY,
-//           duration: 0.3,
-//           ease: "power2.out",
-//         });
-//       }
-//     };
-
-//     const handleClick = (e: MouseEvent) => {
-//       if (!clickEffect) return;
-
-//       const rect = element.getBoundingClientRect();
-//       const x = e.clientX - rect.left;
-//       const y = e.clientY - rect.top;
-
-//       const maxDistance = Math.max(
-//         Math.hypot(x, y),
-//         Math.hypot(x - rect.width, y),
-//         Math.hypot(x, y - rect.height),
-//         Math.hypot(x - rect.width, y - rect.height)
-//       );
-
-//       const ripple = document.createElement("div");
-//       ripple.style.cssText = `
-//         position: absolute;
-//         width: ${maxDistance * 2}px;
-//         height: ${maxDistance * 2}px;
-//         border-radius: 50%;
-//         background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.2) 30%, transparent 70%);
-//         left: ${x - maxDistance}px;
-//         top: ${y - maxDistance}px;
-//         pointer-events: none;
-//         z-index: 1000;
-//       `;
-
-//       element.appendChild(ripple);
-
-//       gsap.fromTo(
-//         ripple,
-//         {
-//           scale: 0,
-//           opacity: 1,
-//         },
-//         {
-//           scale: 1,
-//           opacity: 0,
-//           duration: 0.8,
-//           ease: "power2.out",
-//           onComplete: () => ripple.remove(),
-//         }
-//       );
-//     };
-
-//     element.addEventListener("mouseenter", handleMouseEnter);
-//     element.addEventListener("mouseleave", handleMouseLeave);
-//     element.addEventListener("mousemove", handleMouseMove);
-//     element.addEventListener("click", handleClick);
-
-//     return () => {
-//       isHoveredRef.current = false;
-//       element.removeEventListener("mouseenter", handleMouseEnter);
-//       element.removeEventListener("mouseleave", handleMouseLeave);
-//       element.removeEventListener("mousemove", handleMouseMove);
-//       element.removeEventListener("click", handleClick);
-
-//     };
-//   },);
-
-//   return (
-//     <div
-//       ref={cardRef}
-//       className={`${className} relative overflow-hidden`}
-//       style={{ ...style, position: "relative", overflow: "hidden" }}
-//     >
-//       {children}
-//     </div>
-//   );
-// };
-
 const GlobalSpotlight: React.FC<{
   gridRef: React.RefObject<HTMLDivElement | null>;
   disableAnimations?: boolean;
@@ -422,7 +250,7 @@ const BentoCardGrid: React.FC<{
   gridRef?: React.RefObject<HTMLDivElement | null>;
 }> = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-2 p-3 max-w-[54rem] select-none relative"
+    className="bento-section grid gap-2 p-3 max-w-216 select-none relative"
     style={{ fontSize: "clamp(1rem, 0.9rem + 0.5vw, 1.5rem)" }}
     ref={gridRef}
   >
@@ -483,8 +311,8 @@ const MagicBento: React.FC<BentoProps> = ({
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 ;
     padding: 0.5rem;
   }
 
@@ -508,9 +336,9 @@ const MagicBento: React.FC<BentoProps> = ({
   }
 
   .card--medium {
-    grid-column: span 1;
+    grid-column: span 2;
     grid-row: span 1;
-    min-height: 200px;
+    height: 190px;
   }
 
   .card--large {
@@ -525,7 +353,7 @@ const MagicBento: React.FC<BentoProps> = ({
   max-height: 550px;
 }
 
-  /* 🔥 Glow border ефект */
+ 
   .card--border-glow {
     position: relative;
     border: 1px solid var(--border-color);
@@ -533,7 +361,7 @@ const MagicBento: React.FC<BentoProps> = ({
     overflow: hidden;
     background: var(--background-dark);
     transition: box-shadow 0.3s ease;
-    z-index: 0; /* щоб світіння не перекривало контент */
+    z-index: 0; 
   }
 
   .card--border-glow::after {
@@ -587,7 +415,7 @@ const MagicBento: React.FC<BentoProps> = ({
   .text-clamp-2 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-word; 
@@ -600,7 +428,7 @@ const MagicBento: React.FC<BentoProps> = ({
     .card--medium {
       grid-column: span 1;
       grid-row: span 2;
-      max-height: 80px;
+      max-height: 120px;
     }
   }
 `}

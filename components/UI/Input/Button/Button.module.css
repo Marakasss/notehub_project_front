@@ -13,11 +13,11 @@
 .animatedButton {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 14px;
   position: relative; /* важливо для позиціювання span:last-child */
   overflow: hidden;
-  margin: 8px;
+
   background-color: #00121f;
   opacity: 1;
   cursor: pointer;
@@ -28,7 +28,7 @@
 
 .animatedButton:hover span:last-child {
   opacity: 0.6;
-  transform: translate(-50%, -50%) scale(3);
+  transform: translate(-50%, -50%) scale(6);
 }
 
 .animatedButton span:last-child {

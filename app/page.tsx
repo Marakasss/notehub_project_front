@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/components/Logo/Logo";
+import Logo from "@/components/UI/Input/Logo/Logo";
 
 import AppDescription from "@/components/AppDescription/AppDescription";
 import AuthButtonGroup from "../components/AuthButtonGroup/AuthButtonGroup";

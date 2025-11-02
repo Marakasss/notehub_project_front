@@ -5,10 +5,11 @@ import React, { useState } from "react";
 import { getMe, RegisterRequest } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store/authStore";
-import Button from "@/components/Button/Button";
+import Button from "@/components/UI/Input/Button/Button";
 import GlareHover from "@/components/ReactBitsAnimations/GlareHover";
 import z from "zod";
 import { User } from "@/types/user";
+import Input from "../UI/Input/Input";
 
 interface AuthFormProps {
   authFn: (userData: RegisterRequest) => Promise<User>;
@@ -75,14 +76,11 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
             >
               Email
             </label>
-            <input
+            <Input
               id="email"
               type="email"
               name="email"
-              className="flex flex-col gap-2 mb-4 border border-cyan-900 rounded-xl p-2 w-64 bg-transparent outline-none 
-                          transition-all duration-300
-                          focus:ring focus:ring-cyan-800 focus:border-cyan-800
-                          focus:shadow-[0_0_12px_rgba(34,211,238,0.4)]"
+              style={{ marginBottom: "10px" }}
             />
           </div>
           <div className="group flex flex-col  mb-4">
@@ -92,22 +90,18 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
             >
               Password
             </label>
-            <input
+            <Input
               id="password"
               type="password"
               name="password"
-              className="flex flex-col gap-2 mb-4 border border-cyan-900 rounded-xl p-2 w-64 bg-transparent outline-none 
-                          transition-all duration-300
-                          focus:ring focus:ring-cyan-800 focus:border-cyan-800
-                          focus:shadow-[0_0_12px_rgba(34,211,238,0.4)]"
+              style={{ marginBottom: "10px" }}
             />
           </div>
           <div className="group flex flex-col  mb-4">
             <Button
               type="submit"
               textContent={authType}
-              widthClasses="w-32"
-              heightClasses="h-10"
+              TWclasses="w-32 h-10"
             />
           </div>
           {error && <p>{error}</p>}

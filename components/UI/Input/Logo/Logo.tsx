@@ -3,7 +3,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 const Logo = () => {
   return (
     <div className="flex items-center justify-center sm:justify-start">
-      <div className="flex items-center  bg-transparent font-bold text-2xl p-2">
+      <div className="flex items-center  bg-transparent font-bold text-2xl ">
         <DotLottieReact
           className="w-24 bg-transparent"
           src="/TaskCycle.json"
