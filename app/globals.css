@@ -16,6 +16,7 @@ html {
 
 body {
   font-family: var(--font-roboto), sans-serif;
+  color: rgb(89, 201, 201);
   letter-spacing: 0.05em;
   display: flex;
   flex-direction: column;
@@ -30,6 +31,21 @@ body {
   100% {
     background-position: -100%;
   }
+}
+
+@keyframes shadow-drop-center {
+  0% {
+    box-shadow: 0 0 3px rgba(0, 101, 134, 0.3), 0 0 5px rgba(0, 101, 126, 0.2),
+      0 0 5px rgba(0, 150, 200, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(0, 179, 255, 0.353),
+      0 0 10px rgba(0, 179, 255, 0.288), 0 0 10px rgba(0, 179, 255, 0.205);
+  }
+}
+
+.animate-shadow-drop-center {
+  animation: shadow-drop-center 1s ease-in-out infinite alternate;
 }
 
 @theme {

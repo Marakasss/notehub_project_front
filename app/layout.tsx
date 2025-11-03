@@ -70,7 +70,7 @@ export default function RootLayout({
         <LightRaysClientWrapper />
         <TanStackProvider>
           <AuthProvider>
-            <div className="relative z-100">
+            <div className="relative z-100 ">
               {" "}
               {/* <Header /> */}
               {children}

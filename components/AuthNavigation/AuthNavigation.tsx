@@ -25,16 +25,16 @@ const AuthNavigation = () => {
 
   return (
     isAuthenticated && (
-      <div className="flex flex-col gap-4 border-t border-t-cyan-900 mt-10 py-5 ">
-        <div className="flex flex-col gap-2 align-middle justify-center">
+      <div className="flex flex-col gap-3 pb-3 mt-auto">
+        <div className="flex  gap-2 align-bottom ">
           <Image
             src={"/default-avatar.jpg"}
             alt="user avatar"
             width={32}
             height={32}
-            className="border rounded-full my-0 mx-auto "
+            className="border rounded-full "
           />
-          <p className="my-0 mx-auto">{user?.username}</p>
+          <p className="text-sm my-auto">{user?.username.split("@")[0]}</p>
         </div>
 
         <ul className="flex gap-3 w-full">
@@ -42,7 +42,7 @@ const AuthNavigation = () => {
             <LinkButton
               href="/profile"
               prefetch={false}
-              TWclasses="gap-2 text-sm"
+              TWclasses="gap-2 text-xs "
               textContent="Profile"
               icon={<HiUserCircle size={18} />}
             ></LinkButton>
@@ -51,7 +51,7 @@ const AuthNavigation = () => {
             <Button
               onClick={handleLogout}
               textContent="Logout"
-              TWclasses="gap-2"
+              TWclasses="gap-2 text-xs "
               icon={<HiUserCircle size={18} />}
             >
               {" "}
