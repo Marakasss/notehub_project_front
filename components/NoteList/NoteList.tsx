@@ -32,21 +32,30 @@ const NoteList = ({ notes }: NoteListProps) => {
                 cards={[
                   {
                     color: "rgba(6, 5, 16, 0.5)",
-                    title: title,
-                    description: content,
-                    label: tag,
+                    children: (
+                      <div className="flex flex-col h-full">
+                        <div className="flex-grow">
+                          <h3 className="text-sm font-bold mb-2 ">{title}</h3>
+                          <p
+                            className="text-xs"
+                            style={{
+                              display: "-webkit-box",
+                              WebkitBoxOrient: "vertical",
+                              WebkitLineClamp: 3,
+                              overflow: "hidden",
+                              wordBreak: "break-word",
+                              overflowWrap: "anywhere",
+                            }}
+                          >
+                            {content}
+                          </p>
+                        </div>
 
-                    titleFontStyle: {
-                      fontSize: "14px",
-                      fontWeight: "bold",
-                      color: "rgb(89, 201, 201)",
-                    },
-                    descriptionFontStyle: {
-                      fontSize: "12px",
-                      color: "rgb(89, 201, 201)",
-                    },
-                    labelFontStyle: { fontSize: "10px", color: "#a0a0a0" },
-                    alwaysGlow: true,
+                        <span className="text-xs text-cyan-600 mt-auto">
+                          {tag}
+                        </span>
+                      </div>
+                    ),
                   },
                 ]}
                 textAutoHide={true}
@@ -70,7 +79,7 @@ const NoteList = ({ notes }: NoteListProps) => {
         return (
           <Link href={`/notes/${id}`} key={id}>
             <div className="flex flex-col gap-1">
-              <h3 className="text-sm font-light ">{title}</h3>
+              <h3 className="text-sm font-bold  ">{title}</h3>
               <p
                 className="text-xs"
                 style={{
@@ -84,7 +93,7 @@ const NoteList = ({ notes }: NoteListProps) => {
               >
                 {content}
               </p>
-              <span className="text-xs">{tag}</span>
+              <span className="text-xs text-cyan-600  mt-3">{tag}</span>
             </div>
           </Link>
         );

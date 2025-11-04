@@ -14,6 +14,7 @@ export interface BentoCardProps {
   descriptionFontStyle?: React.CSSProperties;
   labelFontStyle?: React.CSSProperties;
   alwaysGlow?: boolean;
+  children?: React.ReactNode;
 }
 
 export interface BentoProps {
@@ -465,7 +466,7 @@ const MagicBento: React.FC<BentoProps> = ({
             const cardStyle = {
               backgroundColor: card.color || "var(--background-dark)",
               borderColor: "rgb(0, 57, 78)",
-              color: "var(--white)",
+
               "--glow-x": "50%",
               "--glow-y": "50%",
               "--glow-intensity": "0",
@@ -587,23 +588,9 @@ const MagicBento: React.FC<BentoProps> = ({
                   el.addEventListener("click", handleClick);
                 }}
               >
-                <div className="card__content flex flex-col relative text-white">
-                  <h3
-                    className={`card__title font-normal text-base m-0 mb-2 ${
-                      textAutoHide ? "text-clamp-1" : ""
-                    }`}
-                    style={card.titleFontStyle}
-                  >
-                    {card.title}
-                  </h3>
-                  {card.htmlDescr ? (
-                    <div
-                      className={`card__description text-xs leading-5 opacity-90 ${
-                        textAutoHide ? "text-clamp-2" : ""
-                      }`}
-                      style={card.descriptionFontStyle}
-                      dangerouslySetInnerHTML={{ __html: card.htmlDescr }}
-                    />
+                <div className="card__content flex flex-col relative h-full ">
+                  {card.children ? (
+                    <>{card.children}</>
                   ) : (
                     <p
                       className={`card__description text-xs leading-5 opacity-90 ${

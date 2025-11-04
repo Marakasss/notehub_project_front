@@ -64,12 +64,12 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
         {" "}
         <form
           action={handleSubmit}
-          className="border border-cyan-900 rounded-3xl p-8 flex justify-center items-center flex-col relative backdrop-blur-sm bg-white/1 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+          className="border border-cyan-900 rounded-3xl p-8 flex justify-center items-center flex-col relative bg-[linear-gradient(135deg,rgba(5,51,69,0.2),transparent)] shadow-[0_4px_30px_rgba(0,0,0,0.1)] sm:min-w-[300px]"
         >
           <h1 className="text-xl font-bold text-cyan-800 text-center mb-2">
             {authType}
           </h1>
-          <div className="group flex flex-col  mb-4">
+          <div className="group flex flex-col w-full  ">
             <label
               htmlFor="email"
               className="text-sm font-normal text-cyan-900 ml-1 transition-colors duration-300 group-focus-within:text-cyan-800"
@@ -83,7 +83,7 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
               style={{ marginBottom: "10px" }}
             />
           </div>
-          <div className="group flex flex-col  mb-4">
+          <div className="group flex flex-col  mb-4 w-full">
             <label
               htmlFor="password"
               className="text-sm font-normal text-cyan-900 ml-1 transition-colors duration-300 group-focus-within:text-cyan-800"
@@ -97,7 +97,7 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
               style={{ marginBottom: "10px" }}
             />
           </div>
-          <div className="group flex flex-col  mb-4">
+          <div className="group flex flex-col  ">
             <Button
               type="submit"
               textContent={authType}

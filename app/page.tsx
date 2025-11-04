@@ -8,7 +8,7 @@ import Header from "@/components/Header/Header";
 
 export default function Page() {
   return (
-    <main>
+    <main className="p-3">
       <Logo />
       <div className="lg:flex flex-col   lg:flex-row-reverse my-auto mx-auto  p-8">
         <AppDescription />

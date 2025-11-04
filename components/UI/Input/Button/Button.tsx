@@ -1,6 +1,5 @@
 import React from "react";
 import css from "./Button.module.css";
-import { prefetch } from "next/dist/client/components/segment-cache-impl/prefetch";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   TWclasses?: string;

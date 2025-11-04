@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getMeServer } from "@/lib/api/serverApi";
 import { Metadata } from "next";
+import LinkButton from "@/components/UI/Input/Button/LinkButton";
 
 //Metadata----------------------------------------
 
@@ -45,30 +46,28 @@ const ProfilePage = async () => {
   }
 
   return (
-    <div>
-      <main className={css.mainContent}>
-        <div className={css.profileCard}>
-          <div className={css.header}>
-            <h1 className={css.formTitle}>Profile Page</h1>
-            <Link href="/profile/edit" className={css.editProfileButton}>
-              Edit Profile
-            </Link>
-          </div>
-          <div className={css.avatarWrapper}>
-            <Image
-              src={user?.avatar || "/default-avatar.jpg"}
-              alt="User Avatar"
-              width={120}
-              height={120}
-              className={css.avatar}
-            />
-          </div>
-          <div className={css.profileInfo}>
-            <p>Username: {user?.username || "Guest"}</p>
-            <p>Email: {user?.email || "your_email@example.com"}</p>
-          </div>
-        </div>
-      </main>
+    <div className="flex flex-col gap-5 p-3 items-center">
+      <div className="flex gap-5 justify-center">
+        <h1 className="text-2xl">Profile Page</h1>
+      </div>
+      <div className="">
+        <Image
+          src={user?.avatar || "/default-avatar.png"}
+          alt="User Avatar"
+          width={120}
+          height={120}
+          className={css.avatar}
+        />
+      </div>
+      <div className="text-sm">
+        <p className="">Username: {user?.username}</p>
+        <p>Email: {user?.email}</p>
+      </div>
+      <LinkButton
+        href="/profile/edit"
+        textContent="Edit profile"
+        TWclasses="w-32"
+      />
     </div>
   );
 };

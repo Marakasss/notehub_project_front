@@ -1,45 +1,72 @@
 "use client";
 
-import { tags } from "@/constants/tags";
-import css from "./SideBarNotes.module.css";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import AuthNavigation from "@/components/AuthNavigation/AuthNavigation";
+import CategoriesList from "@/components/CategoriesList/CategoriesList";
 import LinkButton from "@/components/UI/Input/Button/LinkButton";
 import useIsMobile from "@/lib/hooks/use-is-mobile";
+import Link from "next/link";
+import { TbInfoSquareFilled } from "react-icons/tb";
+import { FaList } from "react-icons/fa";
+import { FaPlusSquare } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
+import { TbHomeFilled } from "react-icons/tb";
+import { useState } from "react";
+import MobileCategoriesList from "@/components/MobileCategoriesList/MobileCategoriesList";
 
 const SidebarNotes = () => {
-  const path = usePathname().split("/");
-  const activeTag = path[path.length - 1];
   const { isMobile, isLoading } = useIsMobile();
+  const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    !isMobile &&
-    !isLoading && (
-      <>
-        <LinkButton
-          href="/notes/action/create"
-          textContent="Create note"
-          TWclasses="h-10"
-        />
-        <ul className={css.menuList}>
-          {tags.map((tag) => {
-            const isActive = tag === activeTag;
-            return (
-              <li key={tag} className={css.menuItem}>
-                <Link
-                  href={`/notes/filter/${tag}`}
-                  className={`${css.menuLink} ${isActive ? css.active : ""} `}
-                >
-                  {tag}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+  const toggleOpen = () => setIsOpen((prev) => !prev);
+
+  return !isMobile && !isLoading ? (
+    <>
+      <LinkButton
+        href="/notes/action/create"
+        textContent="Create note"
+        TWclasses="h-10"
+      />
+      <CategoriesList />
+      <AuthNavigation />
+    </>
+  ) : (
+    <>
+      <ul className="flex flex-col gap-6 align-middle ">
+        <li>
+          <Link href="/">
+            <TbHomeFilled size={26} />
+          </Link>
+        </li>
+        <li>
+          <Link href="/notes/action/create">
+            <FaPlusSquare size={26} />
+          </Link>
+        </li>
+        <li>
+          <button onClick={toggleOpen}>
+            <FaList size={26} />
+          </button>
+          <MobileCategoriesList
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+          >
+            <CategoriesList onClose={() => setIsOpen(false)} />
+          </MobileCategoriesList>
+        </li>
+
+        <li>
+          <Link href="/profile">
+            <FaUserEdit size={26} />
+          </Link>
+        </li>
+        <li>
+          <Link href="/">
+            <TbInfoSquareFilled size={26} />
+          </Link>
+        </li>
         <AuthNavigation />
-      </>
-    )
+      </ul>
+    </>
   );
 };
 

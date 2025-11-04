@@ -10,6 +10,14 @@
   justify-content: center;
 }
 
+@media screen and (min-width > 767px) {
+  .menuList {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
 .menuItem {
   margin-bottom: 3px;
 }
@@ -20,7 +28,6 @@
   font-weight: normal;
   font-size: 14px;
   display: block;
-
   border: 1px solid rgb(5, 51, 69);
   border-radius: 8px;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -33,22 +40,11 @@
 }
 
 .menuLink.active {
-  animation: shadow-drop-center-low 1.5s infinite alternate;
+  animation: shadow-drop-center 1.5s infinite alternate;
 
   backdrop-filter: blur(4px);
 }
 .menuLink:hover {
   transform: translateX(16px);
   backdrop-filter: blur(1000px);
-}
-
-@keyframes shadow-drop-center-low {
-  0% {
-    box-shadow: 0 0 3px rgba(0, 101, 134, 0.3), 0 0 5px rgba(0, 101, 126, 0.2),
-      0 0 5px rgba(0, 150, 200, 0.1);
-  }
-  100% {
-    box-shadow: 0 0 6px rgba(0, 179, 255, 0.353),
-      0 0 10px rgba(0, 179, 255, 0.288), 0 0 10px rgba(0, 179, 255, 0.205);
-  }
 }
