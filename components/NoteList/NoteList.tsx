@@ -34,7 +34,7 @@ const NoteList = ({ notes }: NoteListProps) => {
                     color: "rgba(6, 5, 16, 0.5)",
                     children: (
                       <div className="flex flex-col h-full">
-                        <div className="flex-grow">
+                        <div className="grow">
                           <h3 className="text-sm font-bold mb-2 ">{title}</h3>
                           <p
                             className="text-xs"

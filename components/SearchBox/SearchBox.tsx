@@ -15,7 +15,7 @@ const SearchBox = ({ value, onSearch }: SearchBoxProps) => {
       value={value}
       onChange={handleChange}
       type="text"
-      placeHolder="Search notes"
+      placeholder="Search notes"
       style={{ height: "42px", alignSelf: "center" }}
     />
   );

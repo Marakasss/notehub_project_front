@@ -1,6 +1,6 @@
 import { LuUserRoundCheck, LuUserRound } from "react-icons/lu";
 import { RiGoogleFill } from "react-icons/ri";
-import LinkButton from "../UI/Input/Button/LinkButton";
+import LinkButton from "../UI/Button/LinkButton";
 
 const AuthButtonGroup = () => {
   return (

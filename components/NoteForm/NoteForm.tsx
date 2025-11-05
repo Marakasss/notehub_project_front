@@ -1,14 +1,19 @@
 "use client";
 
 import { useId, useState } from "react";
-import css from "./NoteForm.module.css";
 import * as Yup from "yup";
-import type { NewNoteData, Tag } from "../../types/note";
+import type { NewNoteData, Tag } from "../../types/note.ts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { tags } from "@/constants/tags";
+
+import Modal from "@/components/Modal/Modal";
+import CustomTagSelect from "@/components/UI/CustomSelect/CustomSelect";
+import Input from "@/components/UI/Input/Input";
+
+import Button from "@/components/UI/Button/Button";
 
 const NoteForm = () => {
   const fieldId = useId();
@@ -70,7 +75,7 @@ const NoteForm = () => {
     const values: NewNoteData = {
       title: (formData.get("title") as string) || "",
       content: (formData.get("content") as string) || "",
-      tag: formData.get("tag") as Tag,
+      tag: draft.tag,
     };
 
     mutate(values);
@@ -84,77 +89,76 @@ const NoteForm = () => {
     draft.content.trim().length <= 500;
 
   return (
-    <form action={handleSubmit} className={css.form}>
-      {/* -----Title input field----- */}
+    <Modal onClose={onClose}>
+      <form
+        action={handleSubmit}
+        className="w-fit min-w-[300px] sm:min-w-[360px] flex justify-center items-center flex-col  gap-2 sm:gap-5 p-3 sm:p-8 self-center  border border-cyan-900 rounded-2xl    bg-[linear-gradient(135deg,rgba(5,51,69,0.9),rgba(5,51,69,0.8))] shadow-[0_4px_30px_rgba(0,0,0,0.1)] "
+      >
+        {/* -----Select tag field----- */}
 
-      <div className={css.formGroup}>
-        <label className={css.formLabel} htmlFor={`${fieldId}-title`}>
-          Title
-        </label>
-        <input
-          id={`${fieldId}-title`}
-          type="text"
-          name="title"
-          className={css.input}
-          onChange={handleChange}
-          defaultValue={draft.title}
+        <CustomTagSelect
+          fieldId={fieldId}
+          tags={tags}
+          draft={draft}
+          handleChange={handleChange}
         />
-        {alert.title && <div className={css.error}>{alert.title}</div>}
-      </div>
 
-      {/* -----Content textarea field----- */}
+        {/* -----Title input field----- */}
 
-      <div className={css.formGroup}>
-        <label className={css.formLabel} htmlFor={`${fieldId}-content`}>
-          Content
-        </label>
-        <textarea
-          id={`${fieldId}-content`}
-          name="content"
-          rows={8}
-          className={css.textarea}
-          onChange={handleChange}
-          defaultValue={draft.content}
-        />
-        {alert.content && <div className={css.error}>{alert.content}</div>}
-      </div>
+        <div className="group w-full">
+          <label htmlFor={`${fieldId}-title`} className="text-xs mb-2">
+            Title
+          </label>
+          <Input
+            id={`${fieldId}-title`}
+            type="text"
+            name="title"
+            onChange={handleChange}
+            defaultValue={draft.title}
+            TWclasses="w-full min-w-[220]"
+          />
 
-      {/* -----Select tag field----- */}
+          {alert.title && <div className="text-xs">{alert.title}</div>}
+        </div>
 
-      <div className={css.formGroup}>
-        <label className={css.formLabel} htmlFor={`${fieldId}-tag`}>
-          Tag
-        </label>
-        <select
-          id={`${fieldId}-tag`}
-          name="tag"
-          className={css.select}
-          onChange={handleChange}
-          defaultValue={draft.tag}
-        >
-          {tags.slice(1).map((tag) => (
-            <option key={tag} value={tag}>
-              {tag}
-            </option>
-          ))}
-        </select>
-      </div>
+        {/* -----Content textarea field----- */}
 
-      {/* -----Action buttons----- */}
+        <div className="group w-full flex flex-col">
+          <label className="text-xs mb-2" htmlFor={`${fieldId}-content`}>
+            Content
+          </label>
+          <textarea
+            id={`${fieldId}-content`}
+            name="content"
+            rows={8}
+            className=" border border-cyan-900 rounded-xl p-2 w-auto  bg-transparent outline-none 
+                          transition-all duration-300
+                          focus:ring focus:ring-cyan-800 focus:border-cyan-800
+                          focus:shadow-[0_0_12px_rgba(34,211,238,0.4)]"
+            onChange={handleChange}
+            defaultValue={draft.content}
+          />
+          {alert.content && <div className="text-xs">{alert.content}</div>}
+        </div>
 
-      <div>
-        <button onClick={onClose} type="button" className={css.cancelButton}>
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className={css.submitButton}
-          disabled={!isFormValid}
-        >
-          Create note
-        </button>
-      </div>
-    </form>
+        {/* -----Action buttons----- */}
+
+        <div className="flex justify-center gap-5">
+          <Button
+            onClick={onClose}
+            type="button"
+            textContent="Cancel"
+            style={{ backgroundColor: "rgba(25,105,125,0.2)" }}
+          ></Button>
+          <Button
+            type="submit"
+            disabled={!isFormValid}
+            textContent="Create"
+            style={{ backgroundColor: "rgba(25,105,125,0.2)" }}
+          ></Button>
+        </div>
+      </form>
+    </Modal>
   );
 };
 

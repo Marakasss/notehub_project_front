@@ -3,10 +3,10 @@
 import { useAuthStore } from "@/lib/store/authStore";
 import { logout } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
-import Button from "../UI/Input/Button/Button";
+import Button from "../UI/Button/Button";
 import { HiUserCircle } from "react-icons/hi2";
 import { TbLogout } from "react-icons/tb";
-import LinkButton from "../UI/Input/Button/LinkButton";
+import LinkButton from "../UI/Button/LinkButton";
 import Image from "next/image";
 import useIsMobile from "@/lib/hooks/use-is-mobile";
 import { RiLogoutCircleLine } from "react-icons/ri";

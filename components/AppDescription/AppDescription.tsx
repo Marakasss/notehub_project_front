@@ -8,26 +8,45 @@ const AppDescription = () => {
           cards={[
             {
               color: "rgba(6, 5, 16, 0.5)",
-              title: "Welcome to NoteHub",
-              htmlDescr: `<p>
-                NoteHub is a simple and efficient application designed for managing
-                 personal notes. It helps keep your thoughts organized and accessible in one place,
-                  whether you're at home or on the go.
-                  </p>
-                  <p>
-                  NoteHub is a simple and efficient
-                   application designed for managing personal notes.It helps keep your thoughts
-                    organized and accessible in one place, whether you're at home or on the go.
-                    </p>`,
-
+              
               size: "xl",
-              titleFontStyle: {
-                fontSize: "32px",
-                fontWeight: "bold",
-                color: "#dedae8",
-              },
-              descriptionFontStyle: { fontSize: "18px", color: "#dedae8" },
-              alwaysGlow: true,
+              children: (
+                <>
+                  <div className="max-w-5xl mx-auto p-3  h-full ">
+                    <h2 className="text-3xl font-bold text-center text-cyan-500 mb-8">
+                      Welcome to NoteHub
+                    </h2>
+
+                    <div className="flex flex-col">
+                      <div className="flex flex-col justify-center">
+                        <p className="text-lg  mb-4">
+                          NoteHub is a simple and efficient{" "}
+                          <span className="font-semibold">
+                            responsive application
+                          </span>{" "}
+                          designed for managing personal notes. Whether
+                          you&apos;re at home or on the go, it helps keep your
+                          thoughts organized and accessible in one place.
+                        </p>
+                        <p className="text-lg  mb-4">
+                          Built with{" "}
+                          <span className="font-semibold">
+                            Next.js, TypeScript, and Zustand
+                          </span>{" "}
+                          for state management, NoteHub offers seamless
+                          functionality with features like:
+                        </p>
+                        <ul className="list-disc text-lg pl-6 ">
+                          <li>User registration via Google Auth</li>
+                          <li>Note creation and profile editing</li>
+                          <li>Filtering by tags</li>
+                          <li>Dynamic routing with real-time validation</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ),
             },
           ]}
           textAutoHide={false}
@@ -48,9 +67,9 @@ const AppDescription = () => {
           Welcome to NoteHub
         </h1>
         <p>
-          NoteHub is a simple and efficient application designed for managing
-          personal notes. It helps keep your thoughts organized and accessible
-          in one place, whether youre at home or on the go.
+          NoteHub is a simple and efficient responsive application designed for
+          managing personal notes. It helps keep your thoughts organized and
+          accessible in one place, whether youre at home or on the go.
         </p>
         <p>
           NoteHub is a simple and efficient application designed for managing

@@ -1,10 +1,9 @@
 "use client";
 
-import Logo from "@/components/UI/Input/Logo/Logo";
+import Logo from "@/components/UI/Logo/Logo";
 
 import AppDescription from "@/components/AppDescription/AppDescription";
 import AuthButtonGroup from "../components/AuthButtonGroup/AuthButtonGroup";
-import Header from "@/components/Header/Header";
 
 export default function Page() {
   return (

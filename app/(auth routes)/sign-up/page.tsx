@@ -1,7 +1,7 @@
 "use client";
 
 import { register } from "@/lib/api/clientApi";
-import Logo from "@/components/UI/Input/Logo/Logo";
+import Logo from "@/components/UI/Logo/Logo";
 import AuthForm from "@/components/AuthForm/AuthForm";
 
 const SignUpPage = () => {

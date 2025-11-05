@@ -2,7 +2,7 @@
 
 import AuthNavigation from "@/components/AuthNavigation/AuthNavigation";
 import CategoriesList from "@/components/CategoriesList/CategoriesList";
-import LinkButton from "@/components/UI/Input/Button/LinkButton";
+import LinkButton from "@/components/UI/Button/LinkButton";
 import useIsMobile from "@/lib/hooks/use-is-mobile";
 import Link from "next/link";
 import { TbInfoSquareFilled } from "react-icons/tb";

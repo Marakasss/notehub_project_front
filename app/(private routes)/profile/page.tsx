@@ -1,10 +1,12 @@
-import React from "react";
-import css from "./ProfilePage.module.css";
-import Link from "next/link";
 import Image from "next/image";
 import { getMeServer } from "@/lib/api/serverApi";
 import { Metadata } from "next";
-import LinkButton from "@/components/UI/Input/Button/LinkButton";
+import LinkButton from "@/components/UI/Button/LinkButton";
+import GlareHover from "@/components/ReactBitsAnimations/GlareHover";
+import { getMe } from "@/lib/api/clientApi";
+import ProfileCard from "@/components/ProfileCard/ProfileCard";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "@/app/loading";
 
 //Metadata----------------------------------------
 
@@ -41,35 +43,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const ProfilePage = async () => {
   const user = await getMeServer();
-  if (!user) {
-    console.log("Who are you?");
-  }
 
-  return (
-    <div className="flex flex-col gap-5 p-3 items-center">
-      <div className="flex gap-5 justify-center">
-        <h1 className="text-2xl">Profile Page</h1>
-      </div>
-      <div className="">
-        <Image
-          src={user?.avatar || "/default-avatar.png"}
-          alt="User Avatar"
-          width={120}
-          height={120}
-          className={css.avatar}
-        />
-      </div>
-      <div className="text-sm">
-        <p className="">Username: {user?.username}</p>
-        <p>Email: {user?.email}</p>
-      </div>
-      <LinkButton
-        href="/profile/edit"
-        textContent="Edit profile"
-        TWclasses="w-32"
-      />
-    </div>
-  );
+  return <ProfileCard user={user} />;
 };
 
 export default ProfilePage;

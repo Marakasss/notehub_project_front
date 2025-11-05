@@ -40,8 +40,8 @@
 
 .formLabel {
   font-weight: bold;
-  font-family:
-    Cambria, Cochin, Georgia, Times, "Times New Roman", serif, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif,
+    sans-serif;
   color: midnightblue;
   font-size: 16px;
 }
@@ -58,8 +58,8 @@
   color: midnightblue;
   font-size: 1rem;
   resize: vertical;
-  font-family:
-    Cambria, Cochin, Georgia, Times, "Times New Roman", serif, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif,
+    sans-serif;
   transition: border-color 0.2s;
 }
 

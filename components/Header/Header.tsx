@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "../UI/Input/Logo/Logo";
+import Logo from "../UI/Logo/Logo";
 import SearchBox from "../SearchBox/SearchBox";
 import { useSearchStore } from "@/lib/store/searchStore";
 import SocialIconGroup from "../SocialIconGroup/SocialIconGroup";

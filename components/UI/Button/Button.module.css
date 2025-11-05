@@ -1,0 +1,50 @@
+/* Button.module.css */
+@keyframes shadow-drop-center {
+  0% {
+    box-shadow: 0 0 3px rgba(0, 101, 134, 0.3), 0 0 5px rgba(0, 101, 126, 0.2),
+      0 0 5px rgba(0, 150, 200, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(0, 179, 255, 0.353),
+      0 0 10px rgba(0, 179, 255, 0.288), 0 0 10px rgba(0, 179, 255, 0.205);
+  }
+}
+
+.animatedButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative; /* важливо для позиціювання span:last-child */
+  overflow: hidden;
+
+  background-color: #00121f;
+  opacity: 1;
+  cursor: pointer;
+  border-radius: 16px;
+  animation: shadow-drop-center 1.5s infinite alternate;
+  transition: all 0.4s ease;
+}
+
+.animatedButton:hover span:last-child {
+  opacity: 0.6;
+  transform: translate(-50%, -50%) scale(6);
+}
+
+.animatedButton span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background-color: #002f41;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animatedButton span:first-child {
+  position: relative;
+  z-index: 1;
+}

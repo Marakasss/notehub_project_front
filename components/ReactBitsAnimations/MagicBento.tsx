@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 
 export interface BentoCardProps {
   color?: string;
+  backgroundImage?: string;
   title?: string;
   description?: string;
   htmlDescr?: string;
@@ -466,6 +467,8 @@ const MagicBento: React.FC<BentoProps> = ({
             const cardStyle = {
               backgroundColor: card.color || "var(--background-dark)",
               borderColor: "rgb(0, 57, 78)",
+              backgroundImage: card.backgroundImage || "none",
+              backgroundSize: "cover",
 
               "--glow-x": "50%",
               "--glow-y": "50%",
@@ -588,7 +591,7 @@ const MagicBento: React.FC<BentoProps> = ({
                   el.addEventListener("click", handleClick);
                 }}
               >
-                <div className="card__content flex flex-col relative h-full ">
+                <div className="card__content  flex flex-col relative h-full ">
                   {card.children ? (
                     <>{card.children}</>
                   ) : (

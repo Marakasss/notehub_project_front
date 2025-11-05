@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { getMe, RegisterRequest } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store/authStore";
-import Button from "@/components/UI/Input/Button/Button";
+import Button from "@/components/UI/Button/Button";
 import GlareHover from "@/components/ReactBitsAnimations/GlareHover";
 import z from "zod";
 import { User } from "@/types/user";
@@ -104,9 +104,9 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
               TWclasses="w-32 h-10"
             />
           </div>
-          {error && <p>{error}</p>}
         </form>
       </GlareHover>
+      {error && <p className="text-xs mt-2">{error}</p>}
     </>
   );
 };
