@@ -1,4 +1,4 @@
-import Input from "../UI/Input/Input";
+import Input from "../Input/Input";
 
 interface SearchBoxProps {
   onSearch: (value: string) => void;

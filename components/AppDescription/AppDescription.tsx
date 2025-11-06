@@ -8,12 +8,12 @@ const AppDescription = () => {
           cards={[
             {
               color: "rgba(6, 5, 16, 0.5)",
-              
+
               size: "xl",
               children: (
                 <>
                   <div className="max-w-5xl mx-auto p-3  h-full ">
-                    <h2 className="text-3xl font-bold text-center text-cyan-500 mb-8">
+                    <h2 className="text-3xl font-bold text-center mb-8">
                       Welcome to NoteHub
                     </h2>
 

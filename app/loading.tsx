@@ -1,11 +1,6 @@
-import { CircleLoader } from "react-spinners";
-import css from "./Loader.module.css";
+import Loader from "@/components/UI/Loader/Loader";
 
 const Loading = () => {
-  return (
-    <div className={css.loader}>
-      <CircleLoader color="blue" />
-    </div>
-  );
+  return <Loader />;
 };
 export default Loading;

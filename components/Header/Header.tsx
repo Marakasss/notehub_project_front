@@ -1,7 +1,7 @@
 "use client";
 
 import Logo from "../UI/Logo/Logo";
-import SearchBox from "../SearchBox/SearchBox";
+import SearchBox from "../UI/SearchBox/SearchBox";
 import { useSearchStore } from "@/lib/store/searchStore";
 import SocialIconGroup from "../SocialIconGroup/SocialIconGroup";
 import useIsMobile from "@/lib/hooks/use-is-mobile";

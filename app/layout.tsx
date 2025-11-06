@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Parkinsans, Satisfy } from "next/font/google";
 import "./globals.css";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
 import LightRaysClientWrapper from "@/components/LightRaysClientWrapper/LightRaysClientWrapper";
 
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NoteHub App",
     description: "A simple application for managing personal notes.",
-    url: "https://09-auth-cyan.vercel.app/",
+    url: "https://notehub-project-front.vercel.app/",
     siteName: "NoteHub",
     images: [
       {

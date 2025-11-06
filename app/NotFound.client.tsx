@@ -1,5 +1,5 @@
 "use client";
-import css from "./NotFound.module.css";
+import Doorway from "@/components/UI/Doorway/Doorway";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -25,13 +25,22 @@ const NotFoundClient = () => {
 
   return (
     <>
-      <div className={css.container}></div>
-      <h1 className={css.title}>404 - Page not found</h1>
-      <p className={css.description}>
-        Sorry, the page you are looking for does not exist. <br />
-        You will be redirected to the homepage in {}
-        {countdown > 0 ? countdown : 0} seconds.
-      </p>
+      <div className="flex h-lvh flex-col-reverse sm:flex-row p-3 sm:justify-center gap-4 sm:items-center overflow-y-auto flex-1">
+        <div className="flex flex-col gap-5 max-w-[600]">
+          <h1 className="text-xl sm:text-2xl font-bold">404</h1>
+          <p className="text-xl sm:text-2xl font-bold">
+            Looks like you&apos;ve found the doorway to the great nothing!
+          </p>
+
+          <p>
+            You will be redirected to the homepage in {}
+            {countdown > 0 ? countdown : 0} seconds.
+          </p>
+        </div>
+
+        <Doorway />
+      </div>
+      {/* ======================================= */}
     </>
   );
 };

@@ -27,7 +27,7 @@ export const generateMetadata = async ({
       title,
       description,
 
-      url: `https://09-auth-cyan.vercel.app/filter/${tag}`,
+      url: `https://notehub-project-front.vercel.app/filter/${tag}`,
       siteName: "NoteHub",
       images: [
         {

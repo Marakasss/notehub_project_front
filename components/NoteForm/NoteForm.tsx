@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { tags } from "@/constants/tags";
 
-import Modal from "@/components/Modal/Modal";
+import Modal from "@/components/UI/Modal/Modal";
 import CustomTagSelect from "@/components/UI/CustomSelect/CustomSelect";
 import Input from "@/components/UI/Input/Input";
 
@@ -92,7 +92,7 @@ const NoteForm = () => {
     <Modal onClose={onClose}>
       <form
         action={handleSubmit}
-        className="w-fit min-w-[300px] sm:min-w-[360px] flex justify-center items-center flex-col  gap-2 sm:gap-5 p-3 sm:p-8 self-center  border border-cyan-900 rounded-2xl    bg-[linear-gradient(135deg,rgba(5,51,69,0.9),rgba(5,51,69,0.8))] shadow-[0_4px_30px_rgba(0,0,0,0.1)] "
+        className="w-fit min-w-[300px] sm:min-w-[360px] flex justify-center items-center flex-col  gap-2 sm:gap-5 p-3 sm:p-8 self-center  border border-cyan-900 rounded-2xl    bg-[linear-gradient(135deg,rgba(5,51,69,0.9),rgba(5,51,69,0.8))] shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
       >
         {/* -----Select tag field----- */}
 
@@ -138,7 +138,11 @@ const NoteForm = () => {
             onChange={handleChange}
             defaultValue={draft.content}
           />
-          {alert.content && <div className="text-xs">{alert.content}</div>}
+          {alert.content && (
+            <div className="text-xs text-center mt-1 text-cyan-300">
+              {alert.content}
+            </div>
+          )}
         </div>
 
         {/* -----Action buttons----- */}

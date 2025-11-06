@@ -1,6 +1,9 @@
 "use client";
 
-import css from "./Error.module.css";
+import Doorway from "@/components/UI/Doorway/Doorway";
+
+import Button from "@/components/UI/Button/Button";
+import { IoReloadOutline } from "react-icons/io5";
 
 interface ErrorProps {
   error: Error;
@@ -10,14 +13,26 @@ interface ErrorProps {
 const Error = ({ error, reset }: ErrorProps) => {
   console.error("Error message:", error.message);
   return (
-    <>
-      <div className={css.wrp}>
-        <p className={css.text}>There was an error, please try again...</p>
+    <div className="flex  flex-col-reverse sm:flex-row p-3 sm:justify-center gap-4 sm:items-center overflow-y-auto flex-1">
+      <div className="flex flex-col gap-5 max-w-[600]">
+        <p className="text-xl sm:text-2xl font-bold">
+          Looks like you&apos;ve found the doorway to the great nothing!
+        </p>
+
+        <p>
+          Sorry about that! Pleace try to reload page or visit our homepage to
+          get where need to go
+        </p>
+        <Button
+          textContent=" Reload"
+          icon={<IoReloadOutline />}
+          TWclasses=" mx-auto gap-3"
+          onClick={() => reset()}
+        ></Button>
       </div>
-      <button className={css.button} onClick={() => reset()}>
-        Try again ⟳
-      </button>
-    </>
+
+      <Doorway />
+    </div>
   );
 };
 export default Error;
