@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import * as Yup from "yup";
-import type { NewNoteData, Tag } from "../../types/note.ts";
+import type { NewNoteData } from "../../types/note.ts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
