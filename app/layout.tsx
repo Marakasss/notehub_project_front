@@ -8,10 +8,10 @@ import LightRaysClientWrapper from "@/components/LightRaysClientWrapper/LightRay
 
 //Fonts----------------------------------------
 
-const roboto = Parkinsans({
+const parkinsans = Parkinsans({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
+  variable: "--font-parkinsans",
   display: "swap",
 });
 
@@ -64,7 +64,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${marker.variable}`}>
+      <body className={`${parkinsans.variable} ${marker.variable}`}>
         <LightRaysClientWrapper />
         <TanStackProvider>
           <AuthProvider>
