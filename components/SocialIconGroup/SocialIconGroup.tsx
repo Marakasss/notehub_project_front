@@ -7,17 +7,17 @@ const SocialIconGroup = () => {
   return (
     <ul className="flex gap-3">
       <li>
-        <Link href={"/"}>
+        <Link href={"https://github.com/Marakasss"}>
           <FaGithub size={"28px"} />
         </Link>
       </li>
       <li>
-        <Link href={"/"}>
+        <Link href={"https://t.me/igorpetriv"}>
           <FaTelegram size={"28px"} />
         </Link>
       </li>
       <li>
-        <Link href={"/"}>
+        <Link href={"https://www.linkedin.com/in/ihor-petriv-in/"}>
           <TbBrandLinkedinFilled size={"28px"} />
         </Link>
       </li>
