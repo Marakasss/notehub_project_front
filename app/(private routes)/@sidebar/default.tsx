@@ -33,7 +33,7 @@ const SidebarNotes = () => {
     <>
       <ul className="flex flex-col gap-6 align-middle ">
         <li>
-          <Link href="/">
+          <Link href="/notes/filter/All">
             <TbHomeFilled size={26} />
           </Link>
         </li>

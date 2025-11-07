@@ -1,4 +1,7 @@
+"use client";
+import { usePathname, useRouter } from "next/navigation";
 import Input from "../Input/Input";
+import { useEffect } from "react";
 
 interface SearchBoxProps {
   onSearch: (value: string) => void;
@@ -6,8 +9,23 @@ interface SearchBoxProps {
 }
 
 const SearchBox = ({ value, onSearch }: SearchBoxProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  useEffect(() => {
+    // Підвантажуємо сторінку пошуку наперед
+    router.prefetch("/notes/filter/All");
+  }, [router]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onSearch(e.target.value);
+    const newValue = e.target.value;
+
+    if (!pathname.startsWith("/notes/filter")) {
+      router.push("/notes/filter/All");
+      onSearch(newValue);
+      return;
+    }
+
+    onSearch(newValue);
   };
   return (
     <Input
