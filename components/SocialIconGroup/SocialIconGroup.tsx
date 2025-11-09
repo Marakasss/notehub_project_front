@@ -11,17 +11,20 @@ const SocialIconGroup = ({ size }: SocialIconGroupProps) => {
   return (
     <ul className="flex gap-3">
       <li>
-        <Link href={"https://github.com/Marakasss"}>
+        <Link href={"https://github.com/Marakasss"} target="blank">
           <FaGithub size={size ?? "28px"} />
         </Link>
       </li>
       <li>
-        <Link href={"https://t.me/igorpetriv"}>
+        <Link href={"https://t.me/igorpetriv"} target="blank">
           <FaTelegram size={size ?? "28px"} />
         </Link>
       </li>
       <li>
-        <Link href={"https://www.linkedin.com/in/ihor-petriv-in/"}>
+        <Link
+          href={"https://www.linkedin.com/in/ihor-petriv-in/"}
+          target="blank"
+        >
           <TbBrandLinkedinFilled size={size ?? "28px"} />
         </Link>
       </li>
