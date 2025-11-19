@@ -22,6 +22,7 @@ export const generateMetadata = async ({
 }: NoteDetailsProps): Promise<Metadata> => {
   const { id } = await params;
   const { title, content } = await fetchNoteByIdServer(id);
+
   const snippet = content.length > 30 ? content.slice(0, 30) + "..." : content;
 
   return {

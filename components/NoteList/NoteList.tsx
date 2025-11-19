@@ -7,7 +7,6 @@ import Link from "next/link";
 import MagicBento from "../ReactBitsAnimations/MagicBento";
 import useIsMobile from "@/lib/hooks/use-is-mobile";
 import AnimatedList from "../ReactBitsAnimations/AnimatedList";
-
 import { MdDeleteForever } from "react-icons/md";
 
 interface NoteListProps {
@@ -27,11 +26,11 @@ const NoteList = ({ notes }: NoteListProps) => {
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-0 overflow-y-auto flex-1">
       <AnimatePresence>
         {notes.map((note: Note) => {
-          const { id, title, content, tag } = note;
+          const { _id, title, content, tag } = note;
           return (
             <motion.li
               className="relative"
-              key={id}
+              key={_id}
               layout
               initial={{ opacity: 1, scale: 1, x: 0 }}
               exit={{
@@ -42,7 +41,7 @@ const NoteList = ({ notes }: NoteListProps) => {
                 transition: { duration: 0.4 },
               }}
             >
-              <Link href={`/notes/${id}`}>
+              <Link href={`/notes/${_id}`}>
                 <MagicBento
                   cards={[
                     {
@@ -54,7 +53,7 @@ const NoteList = ({ notes }: NoteListProps) => {
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
-                              mutate(id);
+                              mutate(_id);
                             }}
                           >
                             <MdDeleteForever
@@ -104,15 +103,15 @@ const NoteList = ({ notes }: NoteListProps) => {
   ) : (
     <AnimatedList
       items={notes.map((note: Note) => {
-        const { id, title, content, tag } = note;
+        const { _id, title, content, tag } = note;
         return (
-          <Link href={`/notes/${id}`} key={id} className="relative">
+          <Link href={`/notes/${_id}`} key={_id} className="relative">
             <div
               className="absolute -top-3 -right-3 p-1  cursor-pointer z-50 transition  group "
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                mutate(id);
+                mutate(_id);
               }}
             >
               <MdDeleteForever
@@ -149,4 +148,3 @@ const NoteList = ({ notes }: NoteListProps) => {
 };
 
 export default NoteList;
-

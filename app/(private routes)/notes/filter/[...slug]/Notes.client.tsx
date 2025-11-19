@@ -6,12 +6,12 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { fetchNotes } from "@/lib/api/clientApi";
 import Pagination from "@/components/Pagination/Pagination";
 import { useDebounce } from "use-debounce";
-import type { FetchNotesResponse } from "@/lib/api/clientApi";
+import type { FetchNoteResponse } from "@/lib/api/clientApi";
 import { Tag } from "@/types/note";
 import { useSearchStore } from "@/lib/store/searchStore";
 
 interface NotesClientProps {
-  initialNotesData: FetchNotesResponse;
+  initialNotesData: FetchNoteResponse;
   tag?: Tag;
 }
 
@@ -33,11 +33,11 @@ export default function NotesClient({
       !debouncedInputValue && currentPage === 1 ? initialNotesData : undefined,
   });
 
-  const totalPages = notes.data?.totalPages ?? 0;
+  const totalPages = notes.data?.data.totalPages ?? 0;
 
   return (
     <>
-      <NoteList notes={notes.data?.notes ?? []} />
+      <NoteList notes={notes.data?.data.notes ?? []} />
       {totalPages > 0 && (
         <Pagination
           totalPages={totalPages}

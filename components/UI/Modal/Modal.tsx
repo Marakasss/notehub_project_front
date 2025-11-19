@@ -12,7 +12,8 @@ const Modal = ({ children, onClose }: NoteModalProps) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    let raf = 0;
+    raf = requestAnimationFrame(() => setMounted(true));
 
     const handleEscClick = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -23,6 +24,7 @@ const Modal = ({ children, onClose }: NoteModalProps) => {
     document.body.style.overflow = "hidden";
 
     return () => {
+      cancelAnimationFrame(raf);
       document.removeEventListener("keydown", handleEscClick);
       document.body.style.overflow = originalOverflow;
     };
@@ -32,7 +34,6 @@ const Modal = ({ children, onClose }: NoteModalProps) => {
     if (e.target === e.currentTarget) onClose();
   };
 
-  // ⛔ не намагайся створювати портал, поки document недоступний
   if (!mounted) return null;
 
   return createPortal(

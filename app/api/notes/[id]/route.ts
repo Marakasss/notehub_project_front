@@ -1,36 +1,49 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { api } from "../../api";
+import { AxiosError } from "axios";
 
 interface NoteDetailsProps {
   params: Promise<{ id: string }>;
 }
 
 export async function GET(request: Request, { params }: NoteDetailsProps) {
-  const cookieStore = await cookies();
   const { id } = await params;
-  const { data } = await api(`/notes/${id}`, {
-    headers: {
-      Cookie: cookieStore.toString(),
-    },
-  });
-  if (data) {
-    return NextResponse.json(data);
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
+    const { data } = await api(`/notes/${id}`, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    if (data) {
+      return NextResponse.json(data);
+    }
+  } catch (err) {
+    const error = err as AxiosError<{ error: string }>;
+    return NextResponse.json(
+      {
+        error: error.response?.data.error || `Failed to fetch note by id ${id}`,
+      },
+      { status: error.response?.status || 500 }
+    );
   }
-  return NextResponse.json({ error: "Failed to fetch note" }, { status: 500 });
 }
 
 export async function DELETE(
   request: NextRequest,
   { params }: NoteDetailsProps
 ) {
-  const cookieStore = await cookies();
   const { id } = await params;
 
   try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
     const { data } = await api.delete(`/notes/${id}`, {
       headers: {
-        Cookie: cookieStore.toString(),
+        authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
     });
@@ -38,36 +51,41 @@ export async function DELETE(
     if (data) {
       return NextResponse.json(data, { status: 201 });
     }
-  } catch (error) {
-    console.error("Error deleting note:", error);
+  } catch (err) {
+    const error = err as AxiosError<{ error: string }>;
+    return NextResponse.json(
+      {
+        error:
+          error.response?.data.error || `Failed to delete note by id ${id}`,
+      },
+      { status: error.response?.status || 500 }
+    );
   }
-
-  return NextResponse.json({ error: "Failed to delete note" }, { status: 500 });
 }
 
 export async function PATCH(request: Request, { params }: NoteDetailsProps) {
-  const cookieStore = await cookies();
   const { id } = await params;
   const body = await request.json();
 
   try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
     const { data } = await api.patch(`/notes/${id}`, body, {
       headers: {
-        Cookie: cookieStore.toString(),
+        authorization: `Bearer ${accessToken}`,
       },
     });
     if (data) {
       return NextResponse.json(data);
     }
+  } catch (err) {
+    const error = err as AxiosError<{ error: string }>;
     return NextResponse.json(
-      { error: "Failed to update note" },
-      { status: 500 }
-    );
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json(
-      { error: "Failed to update note" },
-      { status: 500 }
+      {
+        error: error.response?.data.error || `Failed to patch note by id ${id}`,
+      },
+      { status: error.response?.status || 500 }
     );
   }
 }

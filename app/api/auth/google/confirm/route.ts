@@ -1,14 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
-
-import { api } from "../../api";
+import { api } from "@/app/api/api";
 import { AxiosError } from "axios";
-
-export async function POST(req: NextRequest) {
+import { NextResponse } from "next/server";
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
-    const apiRes = await api.post("auth/login", body);
+    const body = await request.json();
+    const apiRes = await api.post("/auth/confirm-oauth", body);
     const res = NextResponse.json(apiRes.data, { status: apiRes.status });
-
     const setCookies = apiRes.headers["set-cookie"];
     if (setCookies) {
       for (const cookieStr of Array.isArray(setCookies)
@@ -21,10 +18,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     const error = err as AxiosError<{ error: string }>;
     return NextResponse.json(
-      {
-        error:
-          error.response?.data.error || "Something went wrong",
-      },
+      { error: error.response?.data.error || "OAuth confirm error" },
       { status: error.response?.status || 500 }
     );
   }

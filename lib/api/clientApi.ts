@@ -3,8 +3,17 @@ import type { Note, NewNoteData } from "../../types/note";
 import { User } from "@/types/user";
 
 //TYPES
+export interface FetchNoteResponse {
+  data: FetchNotesResponseData;
+}
 
-export interface FetchNotesResponse {
+export interface GetNoteResponse {
+  status: number;
+  message: string;
+  data: Note;
+}
+
+export interface FetchNotesResponseData {
   notes: Note[];
   totalPages: number;
 }
@@ -33,7 +42,7 @@ export async function fetchNotes(
   query: string,
   page: number,
   tag: string | undefined = undefined
-): Promise<FetchNotesResponse> {
+): Promise<FetchNoteResponse> {
   const params: FetchNotesParams = {
     ...(query.trim() !== "" && { search: query.trim() }),
     page: page,
@@ -41,7 +50,7 @@ export async function fetchNotes(
     tag,
   };
 
-  const response = await nextServer.get<FetchNotesResponse>("/notes", {
+  const response = await nextServer.get<FetchNoteResponse>("/notes", {
     params,
   });
   return response.data;
@@ -49,14 +58,14 @@ export async function fetchNotes(
 
 //GET NOTE BY ID
 export async function fetchNoteById(noteId: string): Promise<Note> {
-  const response = await nextServer.get<Note>(`/notes/${noteId}`);
-  return response.data;
+  const response = await nextServer.get(`/notes/${noteId}`);
+  return response.data.data;
 }
 
 //GET USER SESSION
 export async function checkSession(): Promise<boolean> {
   try {
-    await nextServer.get("/auth/session");
+    await nextServer.post("/auth/refresh");
     return true;
   } catch {
     return false;
@@ -64,9 +73,19 @@ export async function checkSession(): Promise<boolean> {
 }
 
 //GET CURRENT USER
-export const getMe = async () => {
-  const responce = await nextServer.get<User>("/users/me");
-  return responce.data;
+export const getMe = async (): Promise<User> => {
+  const responce = await nextServer.get("/users/me");
+  return responce.data.data;
+};
+
+export const getGoogleOAuthUrl = async (): Promise<string> => {
+  const response = await nextServer.get("/auth/google/url");
+  return response.data.data.url;
+};
+
+export const confirmGoogleOAuth = async (code: string) => {
+  const response = await nextServer.post("/auth/google/confirm", { code });
+  return response.data;
 };
 
 //POST------------------------------------------------------------------

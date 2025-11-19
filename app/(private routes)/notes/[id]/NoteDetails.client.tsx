@@ -1,9 +1,7 @@
 "use client";
-
 import { useParams } from "next/navigation";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "@/lib/api/clientApi";
-
 import Button from "@/components/UI/Button/Button";
 
 const NoteDetailsClient = () => {

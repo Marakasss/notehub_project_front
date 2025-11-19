@@ -1,12 +1,6 @@
-import Image from "next/image";
 import { getMeServer } from "@/lib/api/serverApi";
 import { Metadata } from "next";
-import LinkButton from "@/components/UI/Button/LinkButton";
-import GlareHover from "@/components/ReactBitsAnimations/GlareHover";
-import { getMe } from "@/lib/api/clientApi";
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
-import { useQuery } from "@tanstack/react-query";
-import Loading from "@/app/loading";
 
 //Metadata----------------------------------------
 

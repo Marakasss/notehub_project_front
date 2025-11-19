@@ -68,11 +68,8 @@ export default function RootLayout({
         <TanStackProvider>
           <AuthProvider>
             <div className="relative z-100 ">
-              {" "}
-              {/* <Header /> */}
               {children}
               {modal}
-              {/* <Footer /> */}
             </div>
           </AuthProvider>
         </TanStackProvider>

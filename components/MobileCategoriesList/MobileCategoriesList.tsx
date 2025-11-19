@@ -1,5 +1,6 @@
 "use client";
 
+import { useClientPortalTarget } from "@/lib/hooks/useClientPortalTarget";
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
@@ -15,6 +16,8 @@ const MobileCategoriesList = ({
   onClose,
   children,
 }: MobileCategoriesListProps) => {
+  const portalTarget = useClientPortalTarget();
+
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
@@ -23,7 +26,7 @@ const MobileCategoriesList = ({
     };
   }, [isOpen]);
 
-  if (typeof window === "undefined") return null;
+  if (!portalTarget) return null;
 
   return createPortal(
     <>
@@ -50,7 +53,7 @@ const MobileCategoriesList = ({
         </div>
       </div>
     </>,
-    document.body
+    portalTarget
   );
 };
 

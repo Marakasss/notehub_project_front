@@ -1,40 +1,52 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { api } from "../../api";
-import { parse } from "cookie";
+import { AxiosError } from "axios";
 
-export async function GET(request: NextRequest) {
-  const cookieStore = await cookies();
-  const refreshToken = cookieStore.get("refreshToken")?.value;
-  const next = request.nextUrl.searchParams.get("next") || "/";
+export async function POST(request: NextRequest) {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+    const refreshToken = cookieStore.get("refreshToken")?.value;
+    const sessionId = cookieStore.get("sessionId")?.value;
 
-  if (refreshToken) {
-    const apiRes = await api.get("auth/session", {
-      headers: {
-        Cookie: cookieStore.toString(),
-      },
-    });
-    const setCookie = apiRes.headers["set-cookie"];
-    if (setCookie) {
-      const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
-      let accessToken = "";
-      let refreshToken = "";
-
-      for (const cookieStr of cookieArray) {
-        const parsed = parse(cookieStr);
-        if (parsed.accessToken) accessToken = parsed.accessToken;
-        if (parsed.refreshToken) refreshToken = parsed.refreshToken;
-      }
-
-      if (accessToken) cookieStore.set("accessToken", accessToken);
-      if (refreshToken) cookieStore.set("refreshToken", refreshToken);
-
-      return NextResponse.redirect(new URL(next, request.url), {
-        headers: {
-          "set-cookie": cookieStore.toString(),
-        },
-      });
+    if (accessToken) {
+      return NextResponse.json({});
     }
+
+    if (!refreshToken || !sessionId) {
+      return NextResponse.json({ error: "NO_REFRESH" }, { status: 401 });
+    }
+
+    const cookieHeader = `refreshToken=${refreshToken}; sessionId=${sessionId}`;
+
+    const apiRes = await api.post(
+      "auth/refresh",
+      {},
+      {
+        headers: { Cookie: cookieHeader },
+      }
+    );
+
+    const res = NextResponse.json({ ok: true });
+
+    const setCookies = apiRes.headers["set-cookie"];
+    if (setCookies) {
+      for (const cookieStr of Array.isArray(setCookies)
+        ? setCookies
+        : [setCookies]) {
+        res.headers.append("Set-Cookie", cookieStr);
+      }
+    }
+
+    return res;
+  } catch (err) {
+    const error = err as AxiosError<{ error: string }>;
+    return NextResponse.json(
+      {
+        error: error.response?.data.error || "Something went wrong",
+      },
+      { status: error.response?.status || 500 }
+    );
   }
-  return NextResponse.redirect(new URL("/sign-in", request.url));
 }

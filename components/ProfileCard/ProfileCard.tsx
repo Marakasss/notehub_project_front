@@ -38,7 +38,7 @@ const ProfileCard = ({ user }: ProfileCardProps) => {
             />
           </div>
           <div className="text-sm">
-            <p className="">Username: {user?.username}</p>
+            <p className="">Username: {user?.username.split("@")[0]}</p>
             <p>Email: {user?.email}</p>
           </div>
           <LinkButton
