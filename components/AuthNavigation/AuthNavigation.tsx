@@ -36,7 +36,7 @@ const AuthNavigation = () => {
           height={36}
           className="border  rounded-full  "
         />
-        <p className="text-sm my-auto">{user?.username.split("@")[0]}</p>
+        <p className="text-sm my-auto">{user?.username}</p>
       </div>
 
       <ul className="flex gap-3 w-full">
