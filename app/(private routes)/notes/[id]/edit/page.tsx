@@ -6,7 +6,6 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { Metadata } from "next";
-import { id } from "zod/v4/locales";
 
 interface EditNoteByIdPageProps {
   params: Promise<{ id: string }>;

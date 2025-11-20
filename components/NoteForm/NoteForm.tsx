@@ -2,13 +2,8 @@
 
 import { useCallback, useEffect, useId, useState } from "react";
 import * as Yup from "yup";
-import type { NewNoteData, Note } from "../../types/note.ts";
-import {
-  keepPreviousData,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import type { NewNoteData } from "../../types/note.ts";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createNote, editNoteById, fetchNoteById } from "@/lib/api/clientApi";
 import { useParams, useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
