@@ -12,7 +12,7 @@ export default function Page() {
     <main className="p-3 ">
       <Logo />
 
-      <div className="lg:flex flex-col   lg:flex-row-reverse  mx-auto px-12  ">
+      <div className="lg:flex flex-col   lg:flex-row-reverse mt-6  mx-auto px-1 md:px-12  ">
         <AppDescription />
         {!isAuthenticated ? (
           <AuthButtonGroup />

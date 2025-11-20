@@ -1,7 +1,7 @@
 "use client";
 
 import useIsMobile from "@/lib/hooks/use-is-mobile";
-import { useClientPortalTarget } from "@/lib/hooks/useClientPortalTarget";
+// import { useClientPortalTarget } from "@/lib/hooks/useClientPortalTarget";
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
@@ -17,7 +17,7 @@ const MobileCategoriesList = ({
   onClose,
   children,
 }: MobileCategoriesListProps) => {
-  const portalTarget = useClientPortalTarget();
+  // const portalTarget = useClientPortalTarget();
   const { isMobile, isLoading } = useIsMobile();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const MobileCategoriesList = ({
     };
   }, [isOpen]);
 
-  if (!portalTarget) return null;
+  // if (!portalTarget) return null;
 
   return createPortal(
     <>
@@ -55,7 +55,7 @@ const MobileCategoriesList = ({
         </div>
       </div>
     </>,
-    portalTarget
+    document.body
   );
 };
 

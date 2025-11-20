@@ -351,7 +351,7 @@ const MagicBento: React.FC<BentoProps> = ({
    .card--xl {
   grid-column: span 4;
   grid-row: span 2;
-  min-height: 400px;
+  min-height: 500px;
   max-height: 600px;
 }
 

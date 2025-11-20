@@ -33,6 +33,20 @@ body {
   }
 }
 
+.arrowWiggle {
+  animation: arrowWiggle 0.8s ease-in-out infinite;
+}
+
+@keyframes arrowWiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-8px); /* рухаємо вліво, бо вказує на GitHub */
+  }
+}
+
 @keyframes shadow-drop-center {
   0% {
     box-shadow: 0 0 3px rgba(0, 101, 134, 0.3), 0 0 5px rgba(0, 101, 126, 0.2),
