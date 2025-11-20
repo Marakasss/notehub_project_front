@@ -29,6 +29,7 @@
 .animatedButton:hover span:last-child {
   opacity: 0.6;
   transform: translate(-50%, -50%) scale(6);
+  
 }
 
 .animatedButton span:last-child {

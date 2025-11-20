@@ -1,5 +1,6 @@
 "use client";
 
+import useIsMobile from "@/lib/hooks/use-is-mobile";
 import { useClientPortalTarget } from "@/lib/hooks/useClientPortalTarget";
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
@@ -17,6 +18,7 @@ const MobileCategoriesList = ({
   children,
 }: MobileCategoriesListProps) => {
   const portalTarget = useClientPortalTarget();
+  const { isMobile, isLoading } = useIsMobile();
 
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
@@ -30,7 +32,7 @@ const MobileCategoriesList = ({
 
   return createPortal(
     <>
-      {isOpen && (
+      {isMobile && !isLoading && isOpen && (
         <div
           className="fixed inset-0 bg-black/40 backdrop-blur-sm z-150 transition-opacity"
           onClick={onClose}

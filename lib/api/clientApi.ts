@@ -95,6 +95,14 @@ export async function createNote(newNote: NewNoteData): Promise<Note> {
   return response.data;
 }
 
+export async function editNoteById(
+  id: string,
+  body: NewNoteData
+): Promise<Note> {
+  const responce = await nextServer.patch<Note>(`/notes/${id}`, body);
+  return responce.data;
+}
+
 export async function register(
   userData: RegisterRequest
 ): Promise<AuthUserData> {

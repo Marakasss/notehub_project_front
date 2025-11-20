@@ -22,7 +22,7 @@ const LinkButton = ({
       href={href}
       prefetch={prefetch}
       className={`
-         px-4 py-2 text-sm
+         px-4 py-2 text-sm transition-transform duration-200  hover:text-cyan-100
          
         ${TWclasses}
         ${css.animatedButton}

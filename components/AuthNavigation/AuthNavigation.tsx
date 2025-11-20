@@ -23,12 +23,12 @@ const AuthNavigation = () => {
   const handleLogout = async () => {
     await logout();
     clearIsAuthenticated();
-    router.push("/sign-in");
+    router.push("/");
   };
 
   return isAuthenticated && !isMobile && !isLoading ? (
-    <div className="flex flex-col gap-2 pb-3 mt-auto">
-      <div className="flex  gap-2 align-bottom ">
+    <div className="flex flex-col gap-4 pb-3 mt-auto">
+      <div className="flex  gap-2 self-center  ">
         <Image
           src={"/default-avatar.png"}
           alt="user avatar"

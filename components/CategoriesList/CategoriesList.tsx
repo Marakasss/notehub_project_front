@@ -19,7 +19,10 @@ const CategoriesList = ({ onClose }: CategoriesListProps) => {
       {tags.map((tag) => {
         const isActive = tag === activeTag;
         return (
-          <li key={tag} className={css.menuItem}>
+          <li
+            key={tag}
+            className={`transition-transform duration-200  hover:text-cyan-100 ${css.menuItem}`}
+          >
             <Link
               href={`/notes/filter/${tag}`}
               className={`${css.menuLink} ${

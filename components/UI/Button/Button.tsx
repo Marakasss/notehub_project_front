@@ -19,7 +19,7 @@ const Button = ({
     <button
       type={type}
       className={`
-        px-4 py-2
+        px-4 py-2 transition-transform duration-200  hover:text-cyan-100
         ${TWclasses}
         ${css.animatedButton}
       `}

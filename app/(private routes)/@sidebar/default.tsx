@@ -19,17 +19,7 @@ const SidebarNotes = () => {
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
-  return !isMobile && !isLoading ? (
-    <>
-      <LinkButton
-        href="/notes/action/create"
-        textContent="Create note"
-        TWclasses="h-10"
-      />
-      <CategoriesList />
-      <AuthNavigation />
-    </>
-  ) : (
+  return isMobile && !isLoading ? (
     <>
       <ul className="flex flex-col gap-6 align-middle ">
         <li>
@@ -66,6 +56,16 @@ const SidebarNotes = () => {
         </li>
         <AuthNavigation />
       </ul>
+    </>
+  ) : (
+    <>
+      <LinkButton
+        href="/notes/action/create"
+        textContent="Create note"
+        TWclasses="h-10"
+      />
+      <CategoriesList />
+      <AuthNavigation />
     </>
   );
 };

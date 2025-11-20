@@ -13,25 +13,13 @@ export async function POST(req: NextRequest) {
     const res = NextResponse.json(apiRes.data, { status: apiRes.status });
 
     if (setCookieHeader) {
-      const cookieArray = Array.isArray(setCookieHeader)
-        ? setCookieHeader
-        : [setCookieHeader];
-
-      for (const cookieStr of cookieArray) {
-        const parsed = parse(cookieStr);
-
-        if (parsed.accessToken)
-          res.cookies.set("accessToken", parsed.accessToken, { path: "/" });
-        if (parsed.refreshToken)
-          res.cookies.set("refreshToken", parsed.refreshToken, {
-            httpOnly: true,
-            path: "/",
-          });
-        if (parsed.sessionId)
-          res.cookies.set("sessionId", parsed.sessionId, {
-            httpOnly: true,
-            path: "/",
-          });
+      const setCookies = apiRes.headers["set-cookie"];
+      if (setCookies) {
+        for (const cookieStr of Array.isArray(setCookies)
+          ? setCookies
+          : [setCookies]) {
+          res.headers.append("Set-Cookie", cookieStr);
+        }
       }
     }
 

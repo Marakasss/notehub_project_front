@@ -1,11 +1,16 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useCallback, useEffect, useId, useState } from "react";
 import * as Yup from "yup";
-import type { NewNoteData } from "../../types/note.ts";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createNote } from "@/lib/api/clientApi";
-import { useRouter } from "next/navigation";
+import type { NewNoteData, Note } from "../../types/note.ts";
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { createNote, editNoteById, fetchNoteById } from "@/lib/api/clientApi";
+import { useParams, useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { tags } from "@/constants/tags";
 
@@ -15,16 +20,36 @@ import Input from "@/components/UI/Input/Input";
 
 import Button from "@/components/UI/Button/Button";
 
-const NoteForm = () => {
+interface NoteFormProps {
+  action: "create" | "update";
+}
+
+const NoteForm = ({ action }: NoteFormProps) => {
   const fieldId = useId();
   const queryClient = useQueryClient();
   const router = useRouter();
   const { draft, setDraft, clearDraft } = useNoteDraftStore();
   const [alert, setAlert] = useState<{ [key: string]: string }>({});
 
-  const onClose = () => router.push("/notes/filter/All");
+  const onClose = useCallback(() => {
+    router.replace("/notes/filter/All");
+  }, [router]);
+
+  const { id } = useParams();
+
+  const { data: noteToUpdate } = useQuery({
+    queryKey: ["note", id],
+    queryFn: () => fetchNoteById(String(id)),
+    refetchOnMount: false,
+  });
 
   //HandleChange-------------------------------------------
+  useEffect(() => {
+    if (action === "update" && noteToUpdate) {
+      const { tag, title, content } = noteToUpdate;
+      setDraft({ tag, title, content });
+    }
+  }, [action, noteToUpdate, setDraft]);
 
   const handleChange = async (
     event: React.ChangeEvent<
@@ -32,7 +57,6 @@ const NoteForm = () => {
     >
   ) => {
     const { name, value } = event.target;
-
     const updatedDraft = {
       ...draft,
       [name]: value,
@@ -61,7 +85,11 @@ const NoteForm = () => {
   //Post notes func-------------------------------------------
 
   const { mutate } = useMutation({
-    mutationFn: (values: NewNoteData) => createNote(values),
+    mutationFn:
+      action === "update" && noteToUpdate
+        ? (values: NewNoteData) => editNoteById(noteToUpdate?._id, values)
+        : (values: NewNoteData) => createNote(values),
+
     onSuccess: () => {
       onClose();
       clearDraft();
@@ -157,7 +185,7 @@ const NoteForm = () => {
           <Button
             type="submit"
             disabled={!isFormValid}
-            textContent="Create"
+            textContent={action === "create" ? "Create" : "Update"}
             style={{ backgroundColor: "rgba(25,105,125,0.2)" }}
           ></Button>
         </div>

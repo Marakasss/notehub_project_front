@@ -10,20 +10,20 @@ interface SocialIconGroupProps {
 const SocialIconGroup = ({ size }: SocialIconGroupProps) => {
   return (
     <ul className="flex gap-3">
-      <li>
-        <Link href={"https://github.com/Marakasss"} target="blank">
+      <li className="transition-transform duration-200 hover:scale-110 hover:text-cyan-100">
+        <Link href="https://github.com/Marakasss" target="_blank">
           <FaGithub size={size ?? "28px"} />
         </Link>
       </li>
-      <li>
-        <Link href={"https://t.me/igorpetriv"} target="blank">
+      <li className="transition-transform duration-200 hover:scale-110 hover:text-cyan-100">
+        <Link href="https://t.me/igorpetriv" target="_blank">
           <FaTelegram size={size ?? "28px"} />
         </Link>
       </li>
-      <li>
+      <li className="transition-transform duration-200 hover:scale-110 hover:text-cyan-100">
         <Link
-          href={"https://www.linkedin.com/in/ihor-petriv-in/"}
-          target="blank"
+          href="https://www.linkedin.com/in/ihor-petriv-in/"
+          target="_blank"
         >
           <TbBrandLinkedinFilled size={size ?? "28px"} />
         </Link>

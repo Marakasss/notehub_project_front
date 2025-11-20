@@ -41,7 +41,7 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
       setIsAuthenticated(true);
       const user = await getMe();
       setUser(user);
-      router.push("/profile");
+      router.push("/notes/filter/All");
     } catch (err) {
       console.error("error", err);
       setError("Invalid email or password");

@@ -1,11 +1,12 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "@/lib/api/clientApi";
 import Button from "@/components/UI/Button/Button";
 
 const NoteDetailsClient = () => {
   const { id } = useParams();
+  const router = useRouter();
 
   const { data: note } = useQuery({
     queryKey: ["note", id],
@@ -25,6 +26,9 @@ const NoteDetailsClient = () => {
     minute: "2-digit",
   });
 
+  const handleEditNote = () => {
+    router.push(`/notes/${note._id}/edit`);
+  };
   return (
     <div className="w-fit max-w-[500px] sm:mt-16 flex justify-center items-center flex-col  gap-2 sm:gap-5 p-3 sm:p-8 self-center  border border-cyan-900 rounded-2xl    bg-[linear-gradient(135deg,rgba(5,51,69,0.9),rgba(5,51,69,0.8))] shadow-[0_4px_30px_rgba(0,0,0,0.1)] ">
       <p className="text-xs self-start">{note.tag}</p>
@@ -46,6 +50,7 @@ const NoteDetailsClient = () => {
       <div className="w-full flex justify-between ">
         <p className="text-xs self-end">{formattedDate}</p>
         <Button
+          onClick={handleEditNote}
           textContent="Edit"
           style={{ backgroundColor: "rgba(25,105,125,0.2)" }}
           TWclasses="self-end"

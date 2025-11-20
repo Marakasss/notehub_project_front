@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { FetchNotesParams, FetchNoteResponse } from "./clientApi";
-import { Note } from "@/types/note";
+import { NewNoteData, Note } from "@/types/note";
 import nextServer from "./api";
 import { User } from "@/types/user";
 
@@ -36,6 +36,18 @@ export async function fetchNoteByIdServer(noteId: string): Promise<Note> {
   });
 
   return response.data.data;
+}
+
+export async function editNoteByIdServer(
+  id: string,
+  body: NewNoteData
+): Promise<Note> {
+  const responce = await nextServer.patch<Note>(`/notes/${id}`, body, {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return responce.data;
 }
 
 export async function checkServerSession(cookieHeader: string | null) {

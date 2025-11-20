@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "@/lib/api/clientApi";
 import Modal from "@/components/UI/Modal/Modal";
@@ -9,17 +9,20 @@ import Button from "@/components/UI/Button/Button";
 
 const NotePreviewClient = () => {
   const { id } = useParams();
+  const pathname = usePathname();
+  const isModalRoute =
+    pathname.includes("/notes/") && !pathname.includes("/filter");
 
   const { data: note } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(String(id)),
-    refetchOnMount: false,
+    refetchOnMount: true,
     placeholderData: keepPreviousData,
   });
 
   const router = useRouter();
   const onClose = useCallback(() => {
-    router.back();
+    router.replace("/notes/filter/All");
   }, [router]);
 
   if (!note) return <p>Note not found</p>;
@@ -32,6 +35,12 @@ const NotePreviewClient = () => {
     hour: "2-digit",
     minute: "2-digit",
   });
+
+  const handleEditNote = () => {
+    router.push(`/notes/${id}/edit`);
+  };
+
+  if (!isModalRoute) return null;
 
   return (
     <Modal onClose={onClose}>
@@ -55,6 +64,9 @@ const NotePreviewClient = () => {
         <div className="w-full flex justify-between ">
           <p className="text-xs self-end">{formattedDate}</p>
           <Button
+            onClick={() => {
+              handleEditNote();
+            }}
             textContent="Edit"
             style={{ backgroundColor: "rgba(25,105,125,0.2)" }}
             TWclasses="self-end"

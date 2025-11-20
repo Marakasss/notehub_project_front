@@ -1,5 +1,16 @@
-import { Metadata } from "next";
 import NoteForm from "@/components/NoteForm/NoteForm";
+import { fetchNoteByIdServer } from "@/lib/api/serverApi";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import { Metadata } from "next";
+import { id } from "zod/v4/locales";
+
+interface EditNoteByIdPageProps {
+  params: Promise<{ id: string }>;
+}
 
 //Metadata----------------------------------------
 
@@ -31,8 +42,20 @@ export const metadata: Metadata = {
 
 //Component----------------------------------------
 
-const CreateNote = () => {
-  return <NoteForm action="create" />;
+const EditNoteByIdPage = async ({ params }: EditNoteByIdPageProps) => {
+  const { id } = await params;
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["note", id],
+    queryFn: () => fetchNoteByIdServer(id),
+  });
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <NoteForm action="update" />;
+    </HydrationBoundary>
+  );
 };
 
-export default CreateNote;
+export default EditNoteByIdPage;
