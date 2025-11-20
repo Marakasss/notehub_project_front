@@ -6,7 +6,6 @@ export async function GET(request: Request) {
   try {
     const { data } = await api.get("/auth/get-oauth-url");
 
-    console.log(`ERR!!!: Your URL is ${data.data.url} `);
     return NextResponse.json(data);
   } catch (err) {
     const error = err as AxiosError<{ error: string }>;

@@ -16,6 +16,8 @@ const EditProfile = () => {
   const setUser = useAuthStore((state) => state.setUser);
   const router = useRouter();
 
+  console.log(user);
+
   const handleSubmit = async (formData: FormData) => {
     const username = String(formData.get("username")).trim();
     if (!username) {
@@ -59,7 +61,7 @@ const EditProfile = () => {
           <h1 className=" text-2xl">Edit Profile</h1>
 
           <Image
-            src={user?.avatar || "/public/default-avatar.jpg"}
+            src={user?.avatar || "/default-avatar.png"}
             alt="User Avatar"
             width={80}
             height={80}

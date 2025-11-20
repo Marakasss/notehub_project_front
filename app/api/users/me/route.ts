@@ -8,6 +8,7 @@ export async function GET() {
   const sessionId = cookieStore.get("sessionId")?.value;
 
   if (!sessionId) {
+    console.log("cant find session");
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
