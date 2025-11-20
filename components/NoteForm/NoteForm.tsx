@@ -8,7 +8,6 @@ import { createNote, editNoteById, fetchNoteById } from "@/lib/api/clientApi";
 import { useParams, useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { tags } from "@/constants/tags";
-
 import Modal from "@/components/UI/Modal/Modal";
 import CustomTagSelect from "@/components/UI/CustomSelect/CustomSelect";
 import Input from "@/components/UI/Input/Input";

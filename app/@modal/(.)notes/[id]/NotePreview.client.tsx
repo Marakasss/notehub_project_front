@@ -11,7 +11,9 @@ const NotePreviewClient = () => {
   const { id } = useParams();
   const pathname = usePathname();
   const isModalRoute =
-    pathname.includes("/notes/") && !pathname.includes("/filter");
+    pathname.includes("/notes/") &&
+    !pathname.includes("/filter") &&
+    !pathname.includes("/action");
 
   const { data: note } = useQuery({
     queryKey: ["note", id],
