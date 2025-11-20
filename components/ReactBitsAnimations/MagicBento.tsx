@@ -352,7 +352,7 @@ const MagicBento: React.FC<BentoProps> = ({
   grid-column: span 4;
   grid-row: span 2;
   min-height: 400px;
-  max-height: 550px;
+  max-height: 600px;
 }
 
  

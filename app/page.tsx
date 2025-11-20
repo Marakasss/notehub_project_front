@@ -9,9 +9,10 @@ import LinkButton from "@/components/UI/Button/LinkButton";
 export default function Page() {
   const { isAuthenticated } = useAuthStore();
   return (
-    <main className="p-3">
+    <main className="p-3 ">
       <Logo />
-      <div className="lg:flex flex-col   lg:flex-row-reverse my-auto mx-auto p-2 sm:p-8">
+
+      <div className="lg:flex flex-col   lg:flex-row-reverse  mx-auto px-12  ">
         <AppDescription />
         {!isAuthenticated ? (
           <AuthButtonGroup />
