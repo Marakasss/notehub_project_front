@@ -16,8 +16,6 @@ const EditProfile = () => {
   const setUser = useAuthStore((state) => state.setUser);
   const router = useRouter();
 
-  console.log(user);
-
   const handleSubmit = async (formData: FormData) => {
     const username = String(formData.get("username")).trim();
     if (!username) {
