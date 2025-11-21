@@ -88,9 +88,11 @@ const NoteForm = ({ action }: NoteFormProps) => {
 
     onSuccess: () => {
       onClose();
-      clearDraft();
+      if (action === "update" && id) {
+        queryClient.invalidateQueries({ queryKey: ["notes", id] });
+      }
       queryClient.invalidateQueries({ queryKey: ["notes"] });
-      queryClient.invalidateQueries({ queryKey: ["note"] });
+      clearDraft();
     },
   });
 
@@ -139,7 +141,7 @@ const NoteForm = ({ action }: NoteFormProps) => {
             type="text"
             name="title"
             onChange={handleChange}
-            defaultValue={draft.title}
+            value={draft.title}
             TWclasses="w-full min-w-[220]"
           />
 
@@ -161,7 +163,7 @@ const NoteForm = ({ action }: NoteFormProps) => {
                           focus:ring focus:ring-cyan-800 focus:border-cyan-800
                           focus:shadow-[0_0_12px_rgba(34,211,238,0.4)]"
             onChange={handleChange}
-            defaultValue={draft.content}
+            value={draft.content}
           />
           {alert.content && (
             <div className="text-xs text-center mt-1 text-cyan-300">
