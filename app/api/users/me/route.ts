@@ -48,7 +48,7 @@ export async function PATCH(request: Request) {
   const cookieHeader = `sessionId=${sessionId}`;
 
   try {
-    const { data } = await api.patch("/users/me", body, {
+    const { data } = await api.patch("users/me", body, {
       headers: {
         Cookie: cookieHeader,
       },

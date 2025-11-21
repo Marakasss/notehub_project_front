@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     const accessToken = cookieStore.get("accessToken")?.value;
     const body = await request.json();
 
-    const { data } = await api.post("/notes", body, {
+    const { data } = await api.post("notes", body, {
       headers: {
         authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",

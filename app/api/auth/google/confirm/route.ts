@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const apiRes = await api.post("/auth/confirm-oauth", body);
+    const apiRes = await api.post("auth/confirm-oauth", body);
     const res = NextResponse.json(apiRes.data, { status: apiRes.status });
     const setCookies = apiRes.headers["set-cookie"];
     if (setCookies) {

@@ -77,7 +77,7 @@ export async function PATCH(request: Request, { params }: NoteDetailsProps) {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get("accessToken")?.value;
 
-    const { data } = await api.patch(`/notes/${id}`, body, {
+    const { data } = await api.patch(`notes/${id}`, body, {
       headers: {
         authorization: `Bearer ${accessToken}`,
       },

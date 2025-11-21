@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   try {
-    const { data } = await api.get("/auth/get-oauth-url");
+    const { data } = await api.get("auth/get-oauth-url");
 
     return NextResponse.json(data);
   } catch (err) {
