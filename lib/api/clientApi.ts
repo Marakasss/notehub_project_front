@@ -147,8 +147,8 @@ export async function logout() {
 // ############################################################################
 
 export const editUser = async (user: AuthUserData): Promise<User> => {
-  const responce = await nextServer.patch<User>("/users/me", user);
-  return responce.data;
+  const responce = await nextServer.patch("/users/me", user);
+  return responce.data.data;
 };
 
 // ---------------------------------------------------------------------------
