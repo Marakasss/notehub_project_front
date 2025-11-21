@@ -90,6 +90,7 @@ const NoteForm = ({ action }: NoteFormProps) => {
       onClose();
       clearDraft();
       queryClient.invalidateQueries({ queryKey: ["notes"] });
+      queryClient.invalidateQueries({ queryKey: ["note"] });
     },
   });
 
