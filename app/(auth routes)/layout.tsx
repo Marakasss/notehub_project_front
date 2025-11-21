@@ -2,9 +2,13 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useTransition } from "react";
 
+//##########################################################################
+
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
+
+//##########################################################################
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   const [isPending, startTransition] = useTransition();

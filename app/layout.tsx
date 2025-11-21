@@ -5,7 +5,7 @@ import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
 import LightRaysClientWrapper from "@/components/LightRaysClientWrapper/LightRaysClientWrapper";
 
-//Fonts----------------------------------------
+// ############################################################################
 
 const parkinsans = Parkinsans({
   subsets: ["latin"],
@@ -21,7 +21,7 @@ const marker = Satisfy({
   display: "swap",
 });
 
-//Metadata----------------------------------------
+// ############################################################################
 
 const url = "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg";
 
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
 };
 
-//RootLayout----------------------------------------
+// ############################################################################
 
 export default function RootLayout({
   children,

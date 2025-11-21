@@ -10,10 +10,14 @@ import type { FetchNoteResponse } from "@/lib/api/clientApi";
 import { Tag } from "@/types/note";
 import { useSearchStore } from "@/lib/store/searchStore";
 
+//##########################################################################
+
 interface NotesClientProps {
   initialNotesData: FetchNoteResponse;
   tag?: Tag;
 }
+
+//##########################################################################
 
 export default function NotesClient({
   initialNotesData,

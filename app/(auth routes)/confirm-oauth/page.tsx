@@ -6,6 +6,8 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+//##########################################################################
+
 const GoogleAuthConfirmPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();

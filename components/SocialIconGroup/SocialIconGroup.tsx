@@ -3,9 +3,13 @@ import { FaGithub } from "react-icons/fa6";
 import { FaTelegram } from "react-icons/fa";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
 
+// ################################################################################
+
 interface SocialIconGroupProps {
   size?: string | number;
 }
+
+// ################################################################################
 
 const SocialIconGroup = ({ size }: SocialIconGroupProps) => {
   return (

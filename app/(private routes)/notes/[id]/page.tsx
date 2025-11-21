@@ -1,5 +1,4 @@
 import NoteDetailsClient from "./NoteDetails.client";
-
 import {
   dehydrate,
   HydrationBoundary,
@@ -8,13 +7,14 @@ import {
 import { Metadata } from "next";
 import { fetchNoteByIdServer } from "@/lib/api/serverApi";
 
-//Types--------------------------------------------
+//##########################################################################
 
 interface NoteDetailsProps {
   params: Promise<{ id: string }>;
 }
 
-//Metadata----------------------------------------
+//##########################################################################
+
 const url = "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg";
 
 export const generateMetadata = async ({
@@ -53,7 +53,7 @@ export const generateMetadata = async ({
   };
 };
 
-//Component--------------------------------------------
+//##########################################################################
 
 const NoteDetails = async ({ params }: NoteDetailsProps) => {
   const { id } = await params;

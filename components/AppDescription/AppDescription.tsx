@@ -3,6 +3,9 @@ import MagicBento from "../ReactBitsAnimations/MagicBento";
 import SocialIconGroup from "../SocialIconGroup/SocialIconGroup";
 import { FaGithub } from "react-icons/fa6";
 import { TbArrowBigRightLines } from "react-icons/tb";
+import GlareHover from "../ReactBitsAnimations/GlareHover";
+
+// ################################################################################
 
 const AppDescription = () => {
   return (
@@ -37,52 +40,94 @@ const AppDescription = () => {
                       {/* Two columns */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {/* Frontend */}
-                        <div className="p-4 h-fit rounded-xl  shadow-md border border-slate-800">
-                          <h2 className="text-xs xl:text-sm font-semibold mb-3">
-                            Frontend
-                          </h2>
-                          <ul className="space-y-1  text-xs xl:text-sm">
-                            <li>React / Next.js</li>
-                            <li>TypeScript</li>
-                            <li>Tailwind CSS</li>
-                            <li>React Query</li>
-                            <li>Axios</li>
-                            <li>Zustand / Context API</li>
-                            <li>Next API Routing</li>
-                          </ul>
-                        </div>
+                        <GlareHover
+                          glareColor="#00b8db"
+                          glareOpacity={0.2}
+                          glareSize={275}
+                          transitionDuration={1000}
+                          playOnce={true}
+                          width=""
+                          height=""
+                          borderColor="#1E293B"
+                          background="transparent"
+                          borderRadius="24px"
+                        >
+                          <Link
+                            href={
+                              "https://github.com/Marakasss/notehub_project_front"
+                            }
+                            target="blank"
+                            className="w-full"
+                          >
+                            <div className="p-4 h-fit rounded-xl  shadow-md border border-slate-800  relative">
+                              <TbArrowBigRightLines
+                                size={"28"}
+                                className="absolute right-12 top-3 arrowWiggle"
+                              />
+                              <FaGithub
+                                size={"28"}
+                                className="absolute right-3 top-3"
+                              />
+                              <h2 className="text-xs xl:text-sm font-semibold mb-3">
+                                Frontend
+                              </h2>
+                              <ul className="space-y-1  text-xs xl:text-sm">
+                                <li>React / Next.js</li>
+                                <li>TypeScript</li>
+                                <li>Tailwind CSS</li>
+                                <li>React Query</li>
+                                <li>Axios</li>
+                                <li>Zustand / Context API</li>
+                                <li>Next API Routing</li>
+                              </ul>
+                            </div>
+                          </Link>
+                        </GlareHover>
 
                         {/* Backend */}
-
-                        <Link
-                          href={
-                            "https://github.com/Marakasss/notehub-project-back"
-                          }
-                          target="blank"
+                        <GlareHover
+                          glareColor="#00b8db"
+                          glareOpacity={0.2}
+                          glareSize={275}
+                          transitionDuration={1000}
+                          playOnce={true}
+                          width="100%"
+                          height="100%"
+                          borderColor="#1E293B"
+                          background="transparent"
+                          borderRadius="26px"
                         >
-                          <div className="p-4 h-fit rounded-xl  shadow-md border border-slate-800 relative">
-                            <TbArrowBigRightLines
-                              size={"28"}
-                              className="absolute right-12 top-3 arrowWiggle"
-                            />
-                            <FaGithub
-                              size={"28"}
-                              className="absolute right-3 top-3"
-                            />
-                            <h2 className="text-xs xl:text-sm font-semibold mb-3">
-                              Backend
-                            </h2>
-                            <ul className="space-y-1  text-xs xl:text-sm">
-                              <li>Node.js / Express</li>
-                              <li>MongoDB / Mongoose</li>
-                              <li>JWT / Google Authentication</li>
-                              <li>Sessions & Cookies</li>
-                              <li>REST API architecture</li>
-                              <li>Validation with Joi / Yup</li>
-                              <li>Cloud storage / file uploads</li>
-                            </ul>
-                          </div>
-                        </Link>
+                          <Link
+                            href={
+                              "https://github.com/Marakasss/notehub-project-back"
+                            }
+                            target="blank"
+                            className="w-full h-full"
+                          >
+                            <div className="p-4 h-fit rounded-xl  shadow-md border border-slate-800 relative">
+                              <TbArrowBigRightLines
+                                size={"28"}
+                                className="absolute right-12 top-3 arrowWiggle"
+                              />
+                              <FaGithub
+                                size={"28"}
+                                className="absolute right-3 top-3"
+                              />
+                              <h2 className="text-xs xl:text-sm font-semibold mb-3">
+                                Backend
+                              </h2>
+                              <ul className="space-y-1  text-xs xl:text-sm">
+                                <li>Node.js / Express</li>
+                                <li>MongoDB / Mongoose</li>
+                                <li>JWT / Google Authentication</li>
+                                <li>Sessions & Cookies</li>
+                                <li>REST API architecture</li>
+                                <li>Validation with Joi / Yup</li>
+                                <li>Cloud storage / file uploads</li>
+                              </ul>
+                            </div>
+                          </Link>
+                        </GlareHover>
                       </div>
                     </div>
                     <div className="self-center mt-8">
@@ -103,6 +148,9 @@ const AppDescription = () => {
           glowColor="50, 0, 180"
         />
       </div>
+
+      {/* ===========================DESCRIPTION ON MOBILE DEVICES============================= */}
+
       <div
         className="lg:hidden  mb-16 sm:ml-12 sm:mr-12 mx-auto text-sm sm:text-base p-5 border border-solid border-sky-950 rounded-2xl 
         opacity-90 shadow-[0_4px_20px_rgba(30,150,120,0.2),0_0_30px_rgba(90,220,190,0.1),0_0_40px_rgba(132,0,255,0.1)]  "
@@ -128,18 +176,28 @@ const AppDescription = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Frontend */}
-                <div className="p-4 h-fit rounded-xl  shadow-md border border-slate-800">
-                  <h2 className="text-xs  font-semibold mb-3">Frontend</h2>
-                  <ul className="space-y-1  text-xs ">
-                    <li>React / Next.js</li>
-                    <li>TypeScript</li>
-                    <li>Tailwind CSS</li>
-                    <li>React Query</li>
-                    <li>Axios</li>
-                    <li>Zustand / Context API</li>
-                    <li>Next API Routing</li>
-                  </ul>
-                </div>
+                <Link
+                  href={"https://github.com/Marakasss/notehub_project_front"}
+                  target="blank"
+                >
+                  <div className="p-4 h-fit rounded-xl  shadow-md border border-slate-800 relative">
+                    <TbArrowBigRightLines
+                      size={"28"}
+                      className="absolute right-12 top-3 arrowWiggle"
+                    />
+                    <FaGithub size={"28"} className="absolute right-3 top-3" />
+                    <h2 className="text-xs  font-semibold mb-3">Frontend</h2>
+                    <ul className="space-y-1  text-xs ">
+                      <li>React / Next.js</li>
+                      <li>TypeScript</li>
+                      <li>Tailwind CSS</li>
+                      <li>React Query</li>
+                      <li>Axios</li>
+                      <li>Zustand / Context API</li>
+                      <li>Next API Routing</li>
+                    </ul>
+                  </div>
+                </Link>
 
                 {/* Backend */}
 

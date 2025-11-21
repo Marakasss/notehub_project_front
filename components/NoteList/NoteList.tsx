@@ -9,9 +9,13 @@ import useIsMobile from "@/lib/hooks/use-is-mobile";
 import AnimatedList from "../ReactBitsAnimations/AnimatedList";
 import { MdDeleteForever } from "react-icons/md";
 
+// ################################################################################
+
 interface NoteListProps {
   notes: Note[];
 }
+
+// ################################################################################
 
 const NoteList = ({ notes }: NoteListProps) => {
   const queryClient = useQueryClient();
@@ -21,7 +25,9 @@ const NoteList = ({ notes }: NoteListProps) => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
     },
   });
+
   const { isMobile } = useIsMobile();
+
   return !isMobile ? (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-0 overflow-y-auto flex-1">
       <AnimatePresence>

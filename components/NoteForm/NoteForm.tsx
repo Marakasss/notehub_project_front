@@ -1,5 +1,4 @@
 "use client";
-
 import { useCallback, useEffect, useId, useState } from "react";
 import * as Yup from "yup";
 import type { NewNoteData } from "../../types/note.ts";
@@ -11,25 +10,27 @@ import { tags } from "@/constants/tags";
 import Modal from "@/components/UI/Modal/Modal";
 import CustomTagSelect from "@/components/UI/CustomSelect/CustomSelect";
 import Input from "@/components/UI/Input/Input";
-
 import Button from "@/components/UI/Button/Button";
+
+// ################################################################################
 
 interface NoteFormProps {
   action: "create" | "update";
 }
 
+// ################################################################################
+
 const NoteForm = ({ action }: NoteFormProps) => {
   const fieldId = useId();
   const queryClient = useQueryClient();
   const router = useRouter();
+  const { id } = useParams();
   const { draft, setDraft, clearDraft } = useNoteDraftStore();
   const [alert, setAlert] = useState<{ [key: string]: string }>({});
 
   const onClose = useCallback(() => {
     router.replace("/notes/filter/All");
   }, [router]);
-
-  const { id } = useParams();
 
   const { data: noteToUpdate } = useQuery({
     queryKey: ["note", id],
@@ -38,6 +39,7 @@ const NoteForm = ({ action }: NoteFormProps) => {
   });
 
   //HandleChange-------------------------------------------
+
   useEffect(() => {
     if (action === "update" && noteToUpdate) {
       const { tag, title, content } = noteToUpdate;

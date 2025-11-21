@@ -2,13 +2,13 @@
 import Image from "next/image";
 import { useAuthStore } from "@/lib/store/authStore";
 import { AuthUserData, editUser } from "@/lib/api/clientApi";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import GlareHover from "@/components/ReactBitsAnimations/GlareHover";
+
+//##########################################################################
 
 const EditProfile = () => {
   const [error, setError] = useState("");
@@ -28,11 +28,11 @@ const EditProfile = () => {
         username,
         email: user.email,
       };
+
       try {
         const response = await editUser(updatedUser);
         setUser(response);
         console.log("User edit:", response);
-
         router.push("/profile");
       } catch (err) {
         console.error("Error updating profile:", err);
@@ -69,7 +69,6 @@ const EditProfile = () => {
           <form action={handleSubmit} className="flex flex-col gap-3 sm:gap-5">
             <div className="flex flex-col gap-2">
               <label htmlFor="username">Username:</label>
-
               <Input
                 defaultValue={user?.username}
                 type={"text"}

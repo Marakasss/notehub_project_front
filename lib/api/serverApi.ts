@@ -4,7 +4,10 @@ import { NewNoteData, Note } from "@/types/note";
 import nextServer from "./api";
 import { User } from "@/types/user";
 
-//Fetch notes with server-side cookies
+// ############################################################################
+//                              NOTES FN
+// ############################################################################
+
 export async function fetchNotesServer(
   query: string,
   page: number,
@@ -26,7 +29,8 @@ export async function fetchNotesServer(
   return response.data;
 }
 
-//Fetch note by ID with server-side cookies
+//-------------------------------------------------------------------------
+
 export async function fetchNoteByIdServer(noteId: string): Promise<Note> {
   const cookieStore = await cookies();
   const response = await nextServer.get(`/notes/${noteId}`, {
@@ -37,6 +41,8 @@ export async function fetchNoteByIdServer(noteId: string): Promise<Note> {
 
   return response.data.data;
 }
+
+//-------------------------------------------------------------------------
 
 export async function editNoteByIdServer(
   id: string,
@@ -50,6 +56,10 @@ export async function editNoteByIdServer(
   return responce.data;
 }
 
+// ############################################################################
+//                              AUTH FN
+// ############################################################################
+
 export async function checkServerSession(cookieHeader: string | null) {
   return nextServer.post(
     "/auth/refresh",
@@ -62,6 +72,10 @@ export async function checkServerSession(cookieHeader: string | null) {
     }
   );
 }
+
+// ############################################################################
+//                              USER FN
+// ############################################################################
 
 export const getMeServer = async (): Promise<User> => {
   const cookieStore = await cookies();

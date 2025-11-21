@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import { api } from "../../api";
 import { AxiosError } from "axios";
+
+//##########################################################################
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,8 +23,7 @@ export async function POST(req: NextRequest) {
     const error = err as AxiosError<{ error: string }>;
     return NextResponse.json(
       {
-        error:
-          error.response?.data.error || "Something went wrong",
+        error: error.response?.data.error || "Something went wrong",
       },
       { status: error.response?.status || 500 }
     );

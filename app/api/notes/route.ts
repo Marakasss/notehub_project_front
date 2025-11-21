@@ -3,6 +3,8 @@ import { api } from "../api";
 import { cookies } from "next/headers";
 import { AxiosError } from "axios";
 
+//##########################################################################
+
 export async function GET(request: NextRequest) {
   try {
     const cookieStore = await cookies();
@@ -38,7 +40,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-//=================================================================================
+//##########################################################################
 
 export async function POST(request: NextRequest) {
   try {

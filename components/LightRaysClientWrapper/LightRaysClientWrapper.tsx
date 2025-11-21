@@ -1,5 +1,4 @@
 "use client";
-
 import LightRays from "../../components/ReactBitsAnimations/LightRays";
 
 export default function LightRaysClientWrapper() {

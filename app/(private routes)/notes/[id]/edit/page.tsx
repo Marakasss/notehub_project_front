@@ -7,11 +7,13 @@ import {
 } from "@tanstack/react-query";
 import { Metadata } from "next";
 
+//##########################################################################
+
 interface EditNoteByIdPageProps {
   params: Promise<{ id: string }>;
 }
 
-//Metadata----------------------------------------
+//##########################################################################
 
 export const metadata: Metadata = {
   title: "Create Note",
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
   },
 };
 
-//Component----------------------------------------
+//##########################################################################
 
 const EditNoteByIdPage = async ({ params }: EditNoteByIdPageProps) => {
   const { id } = await params;

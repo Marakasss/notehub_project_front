@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { api } from "../../api";
 import { AxiosError } from "axios";
 
+//##########################################################################
+
 export async function GET() {
   const cookieStore = await cookies();
   const sessionId = cookieStore.get("sessionId")?.value;
@@ -31,6 +33,8 @@ export async function GET() {
     );
   }
 }
+
+//##########################################################################
 
 export async function PATCH(request: Request) {
   const cookieStore = await cookies();

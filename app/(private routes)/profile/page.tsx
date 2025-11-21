@@ -2,7 +2,7 @@ import { getMeServer } from "@/lib/api/serverApi";
 import { Metadata } from "next";
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
 
-//Metadata----------------------------------------
+//##########################################################################
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const { username, avatar } = await getMeServer();
@@ -34,6 +34,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
   };
 };
+
+//##########################################################################
 
 const ProfilePage = async () => {
   const user = await getMeServer();

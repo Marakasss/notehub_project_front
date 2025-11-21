@@ -12,7 +12,6 @@ const SearchBox = ({ value, onSearch }: SearchBoxProps) => {
   const router = useRouter();
   const pathname = usePathname();
   useEffect(() => {
-    // Підвантажуємо сторінку пошуку наперед
     router.prefetch("/notes/filter/All");
   }, [router]);
 

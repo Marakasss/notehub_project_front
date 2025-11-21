@@ -3,11 +3,13 @@ import { Tag } from "@/types/note";
 import { Metadata } from "next";
 import { fetchNotesServer } from "@/lib/api/serverApi";
 
+//##########################################################################
+
 interface NotesProps {
   params: Promise<{ slug: string[] }>;
 }
 
-//Metadata----------------------------------------
+//##########################################################################
 
 export const generateMetadata = async ({
   params,
@@ -49,7 +51,7 @@ export const generateMetadata = async ({
   };
 };
 
-//-------------------------------------------------------
+//##########################################################################
 
 const Notes = async ({ params }: NotesProps) => {
   const { slug } = await params;

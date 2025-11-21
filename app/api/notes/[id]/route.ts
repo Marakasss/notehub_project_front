@@ -7,6 +7,8 @@ interface NoteDetailsProps {
   params: Promise<{ id: string }>;
 }
 
+//##########################################################################
+
 export async function GET(request: Request, { params }: NoteDetailsProps) {
   const { id } = await params;
   try {
@@ -31,6 +33,8 @@ export async function GET(request: Request, { params }: NoteDetailsProps) {
     );
   }
 }
+
+//##########################################################################
 
 export async function DELETE(
   request: NextRequest,
@@ -62,6 +66,8 @@ export async function DELETE(
     );
   }
 }
+
+//##########################################################################
 
 export async function PATCH(request: Request, { params }: NoteDetailsProps) {
   const { id } = await params;

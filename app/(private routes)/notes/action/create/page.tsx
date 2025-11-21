@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import NoteForm from "@/components/NoteForm/NoteForm";
 
-//Metadata----------------------------------------
+//##########################################################################
 
 export const metadata: Metadata = {
   title: "Create Note",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-//Component----------------------------------------
+//##########################################################################
 
 const CreateNote = () => {
   return <NoteForm action="create" />;

@@ -1,5 +1,4 @@
 "use client";
-
 import { useAuthStore } from "@/lib/store/authStore";
 import { logout } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
@@ -11,11 +10,12 @@ import Image from "next/image";
 import useIsMobile from "@/lib/hooks/use-is-mobile";
 import { RiLogoutCircleLine } from "react-icons/ri";
 
+// ################################################################################
+
 const AuthNavigation = () => {
   const { isAuthenticated, user } = useAuthStore();
   const router = useRouter();
   const { isMobile, isLoading } = useIsMobile();
-
   const clearIsAuthenticated = useAuthStore(
     (state) => state.clearIsAuthenticated
   );

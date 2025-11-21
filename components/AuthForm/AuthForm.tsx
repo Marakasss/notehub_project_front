@@ -1,7 +1,5 @@
 "use client";
-
 import React, { useState } from "react";
-
 import { getMe, RegisterRequest } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store/authStore";
@@ -11,10 +9,14 @@ import z from "zod";
 import { User } from "@/types/user";
 import Input from "../UI/Input/Input";
 
+// ################################################################################
+
 interface AuthFormProps {
   authFn: (userData: RegisterRequest) => Promise<User>;
   authType: "Login" | "Register";
 }
+
+// ################################################################################
 
 const AuthForm = ({ authFn, authType }: AuthFormProps) => {
   const router = useRouter();
@@ -69,6 +71,7 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
           <h1 className="text-xl font-bold text-cyan-800 text-center mb-2">
             {authType}
           </h1>
+
           <div className="group flex flex-col w-full  ">
             <label
               htmlFor="email"
@@ -83,6 +86,7 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
               style={{ marginBottom: "10px" }}
             />
           </div>
+
           <div className="group flex flex-col  mb-4 w-full">
             <label
               htmlFor="password"
@@ -97,6 +101,7 @@ const AuthForm = ({ authFn, authType }: AuthFormProps) => {
               style={{ marginBottom: "10px" }}
             />
           </div>
+
           <div className="group flex flex-col  ">
             <Button
               type="submit"

@@ -1,10 +1,11 @@
 "use client";
-
 import { LuUserRoundCheck, LuUserRound } from "react-icons/lu";
 import { RiGoogleFill } from "react-icons/ri";
 import LinkButton from "../UI/Button/LinkButton";
 import { getGoogleOAuthUrl } from "@/lib/api/clientApi";
 import Button from "../UI/Button/Button";
+
+// ################################################################################
 
 const AuthButtonGroup = () => {
   const handleGoogleAuth = async () => {
@@ -21,6 +22,7 @@ const AuthButtonGroup = () => {
           icon={<LuUserRoundCheck size={22} />}
         />
       </li>
+
       <li>
         <LinkButton
           href="/sign-up"
@@ -29,6 +31,7 @@ const AuthButtonGroup = () => {
           icon={<LuUserRound size={22} />}
         />
       </li>
+
       <li>
         <Button
           onClick={handleGoogleAuth}

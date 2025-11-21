@@ -13,6 +13,8 @@ import { TbHomeFilled } from "react-icons/tb";
 import { useState } from "react";
 import MobileCategoriesList from "@/components/MobileCategoriesList/MobileCategoriesList";
 
+//##########################################################################
+
 const SidebarNotes = () => {
   const { isMobile, isLoading } = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
@@ -27,11 +29,13 @@ const SidebarNotes = () => {
             <TbHomeFilled size={26} />
           </Link>
         </li>
+
         <li>
           <Link href="/notes/action/create">
             <FaPlusSquare size={26} />
           </Link>
         </li>
+
         <li>
           <button onClick={toggleOpen}>
             <FaList size={26} />
@@ -49,11 +53,13 @@ const SidebarNotes = () => {
             <FaUserEdit size={26} />
           </Link>
         </li>
+
         <li>
           <Link href="/">
             <TbInfoSquareFilled size={26} />
           </Link>
         </li>
+
         <AuthNavigation />
       </ul>
     </>

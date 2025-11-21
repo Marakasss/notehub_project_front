@@ -1,14 +1,17 @@
 "use client";
-
 import { User } from "@/types/user";
 import React from "react";
 import GlareHover from "../ReactBitsAnimations/GlareHover";
 import LinkButton from "../UI/Button/LinkButton";
 import Image from "next/image";
 
+// ################################################################################
+
 interface ProfileCardProps {
   user: User;
 }
+
+// ################################################################################
 
 const ProfileCard = ({ user }: ProfileCardProps) => {
   return (

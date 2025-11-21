@@ -4,6 +4,8 @@ import { register } from "@/lib/api/clientApi";
 import Logo from "@/components/UI/Logo/Logo";
 import AuthForm from "@/components/AuthForm/AuthForm";
 
+//##########################################################################
+
 const SignUpPage = () => {
   return (
     <div className="p-3 flex flex-col h-screen w-screen  ">

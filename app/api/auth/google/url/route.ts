@@ -2,6 +2,8 @@ import { api } from "@/app/api/api";
 import { AxiosError } from "axios";
 import { NextResponse } from "next/server";
 
+//##########################################################################
+
 export async function GET(request: Request) {
   try {
     const { data } = await api.get("/auth/get-oauth-url");

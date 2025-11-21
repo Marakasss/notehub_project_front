@@ -7,9 +7,13 @@ import Modal from "@/components/UI/Modal/Modal";
 import { useCallback } from "react";
 import Button from "@/components/UI/Button/Button";
 
+//##########################################################################
+
 const NotePreviewClient = () => {
   const { id } = useParams();
   const pathname = usePathname();
+  const router = useRouter();
+
   const isModalRoute =
     pathname.includes("/notes/") &&
     !pathname.includes("/filter") &&
@@ -22,7 +26,6 @@ const NotePreviewClient = () => {
     placeholderData: keepPreviousData,
   });
 
-  const router = useRouter();
   const onClose = useCallback(() => {
     router.replace("/notes/filter/All");
   }, [router]);
@@ -52,6 +55,7 @@ const NotePreviewClient = () => {
           <div className="text-xs sm:text-sm font-bold border-b pb-3">
             <h2>{note.title}</h2>
           </div>
+
           <p
             className="text-xs sm:text-sm mt-2 max-h-[12em] overflow-y-auto pr-2"
             style={{
@@ -63,6 +67,7 @@ const NotePreviewClient = () => {
             {note.content}
           </p>
         </div>
+
         <div className="w-full flex justify-between ">
           <p className="text-xs self-end">{formattedDate}</p>
           <Button

@@ -3,6 +3,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
+// ################################################################################
+
 const CustomTagSelect = ({
   fieldId,
   tags,
@@ -24,7 +26,7 @@ const CustomTagSelect = ({
   const handleSelect = (tag: string) => {
     setSelected(tag);
     setIsOpen(false);
-    // емуляція onChange, щоб працювало з твоєю логікою
+
     handleChange({
       target: { name: "tag", value: tag },
     } as React.ChangeEvent<HTMLSelectElement>);
@@ -59,7 +61,7 @@ const CustomTagSelect = ({
         />
       </button>
 
-      {/* Випадаючий список */}
+      {/* DROPDOWN */}
       <AnimatePresence>
         {isOpen && (
           <motion.ul

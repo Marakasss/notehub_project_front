@@ -1,14 +1,17 @@
 "use client";
 
 import Doorway from "@/components/UI/Doorway/Doorway";
-
 import Button from "@/components/UI/Button/Button";
 import { IoReloadOutline } from "react-icons/io5";
+
+//##########################################################################
 
 interface ErrorProps {
   error: Error;
   reset: () => void;
 }
+
+//##########################################################################
 
 const Error = ({ error, reset }: ErrorProps) => {
   console.error("Error message:", error.message);
@@ -23,6 +26,7 @@ const Error = ({ error, reset }: ErrorProps) => {
           Sorry about that! Pleace try to reload page or visit our homepage to
           get where need to go
         </p>
+
         <Button
           textContent=" Reload"
           icon={<IoReloadOutline />}

@@ -6,9 +6,13 @@ import useIsMobile from "@/lib/hooks/use-is-mobile";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// ################################################################################
+
 interface CategoriesListProps {
   onClose?: () => void;
 }
+
+// ################################################################################
 
 const CategoriesList = ({ onClose }: CategoriesListProps) => {
   const path = usePathname().split("/");
