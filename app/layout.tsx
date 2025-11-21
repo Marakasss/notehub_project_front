@@ -4,6 +4,7 @@ import "./globals.css";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
 import LightRaysClientWrapper from "@/components/LightRaysClientWrapper/LightRaysClientWrapper";
+import GoogleAnalytics from "@/components/Analytics/GoogleAnalitycs";
 
 // ############################################################################
 
@@ -64,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${parkinsans.variable} ${marker.variable}`}>
+        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_ID!} />
         <LightRaysClientWrapper />
         <TanStackProvider>
           <AuthProvider>
