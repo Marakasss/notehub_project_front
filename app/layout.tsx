@@ -24,7 +24,8 @@ const marker = Satisfy({
 
 // ############################################################################
 
-const url = "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg";
+const url =
+  "https://res.cloudinary.com/dicmxxz0b/image/upload/v1764084988/2025-11-25_l4ge0j.png";
 
 export const metadata: Metadata = {
   title: "NoteHub",
