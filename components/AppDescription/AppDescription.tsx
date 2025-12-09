@@ -122,7 +122,7 @@ const AppDescription = () => {
                                 <li>JWT / Google Authentication</li>
                                 <li>Sessions & Cookies</li>
                                 <li>REST API architecture</li>
-                                <li>Validation with Joi / Yup</li>
+                                <li>Validation with Joi</li>
                                 <li>Cloud storage / file uploads</li>
                               </ul>
                             </div>
@@ -218,7 +218,7 @@ const AppDescription = () => {
                       <li>JWT / Google Authentication</li>
                       <li>Sessions & Cookies</li>
                       <li>REST API architecture</li>
-                      <li>Validation with Joi / Yup</li>
+                      <li>Validation with Joi</li>
                       <li>Cloud storage / file uploads</li>
                     </ul>
                   </div>
